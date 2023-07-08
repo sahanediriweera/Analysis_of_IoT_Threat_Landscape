@@ -20,6 +20,7 @@ import matplotlib as mpl
 import seaborn as sns
 import pandas
 import json
+import pickle
 
 def convert_dict_to_json(value):
     return json.dumps(value)
@@ -105,13 +106,28 @@ models = {'LogisticRegression': LogisticRegression(max_iter=10000),
           #'XGBClassifier': XGBClassifier(),
           'GradientBoostingClassifier': GradientBoostingClassifier()}
 
-base_line_model = fit_and_score(models,X_train,X_test,y_train,y_test)
+best_model_name = ''
+best_model = None
+best_model_score = 0.0
 
-print(base_line_model)
+for name, model in models.items():
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    score = accuracy_score(y_test, y_pred)
+    if score > best_model_score:
+        best_model_score = score
+        best_model_name = name
+        best_model = model
 
+print("Best model:", best_model_name)
+print("Best model score:", best_model_score)
 
+directory = './'
+if not os.path.exists(directory):
+    os.makedirs(directory)
 
+model_filepath = os.path.join(directory, 'best_model.pkl')
+with open(model_filepath, 'wb') as f:
+    pickle.dump(best_model, f)
 
-
-
-
+print("Best model saved at:", model_filepath)
