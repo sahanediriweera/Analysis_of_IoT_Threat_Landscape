@@ -8,7 +8,6 @@ model_filepath = '/path/to/save/model/best_model.pkl'
 with open(model_filepath, 'rb') as f:
     loaded_model = pickle.load(f)
 
-
 def preprocess_data(data):
 
     df = data.drop('Device', axis=1)
