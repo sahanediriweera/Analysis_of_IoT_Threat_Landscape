@@ -1,4 +1,5 @@
 import subprocess
+import sys
 
 def start_port_scan(ip_address):
     try:
@@ -29,5 +30,4 @@ def extract_open_ports(output):
     return open_ports
 
 if __name__ == "__main__":
-    target_ip = input("Enter the IP address to scan for open ports: ")
-    start_port_scan(target_ip)
+    start_port_scan(sys.argv[1])

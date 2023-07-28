@@ -1,4 +1,5 @@
 import csv
+import sys
 import threading
 import ipaddress
 import time
@@ -15,18 +16,18 @@ def ssh_connect(host, username, password, port):
     except ssh_exception.SSHException:
         print("**** Attempting to connect - Rate limiting on server ****")
 
-def get_ip_address():
+def get_ip_address(arg0):
     while True:
-        host = input("Enter the IP address: ")
+        host = arg0
         try:
             ipaddress.IPv4Address(host)
             return host
         except ipaddress.AddressValueError:
             print("Please enter a valid IP address.")
 
-def start_ssh_connection():
-    host = get_ip_address()
-    port = int(input("Enter the port number: "))
+def start_ssh_connection(arg0,arg1):
+    host = get_ip_address(arg0)
+    port = int(arg1)
     list_file = "passwords.csv"
 
     def ssh_connection():
@@ -43,4 +44,6 @@ def start_ssh_connection():
     threading.Thread(target=ssh_connection).start()
 
 if __name__ == "__main__":
-    start_ssh_connection()
+    arg0 = sys.argv[1]
+    arg1 = sys.argv[2]
+    start_ssh_connection(arg0,arg1)
