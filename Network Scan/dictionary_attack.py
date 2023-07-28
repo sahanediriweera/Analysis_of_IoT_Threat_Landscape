@@ -1,5 +1,7 @@
 import csv
 import threading
+import ipaddress
+import time
 from paramiko import SSHClient, AutoAddPolicy, AuthenticationException, ssh_exception
 
 def ssh_connect(host, username, password, port):
@@ -16,7 +18,6 @@ def ssh_connect(host, username, password, port):
 def get_ip_address():
     while True:
         host = input("Enter the IP address: ")
-
         try:
             ipaddress.IPv4Address(host)
             return host

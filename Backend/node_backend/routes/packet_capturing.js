@@ -5,7 +5,7 @@ const path = require('path');
 
 router.get('/', (req, res) => {
     res.send('it works');
-    const scriptPath = './../../Packet Capturing/packetCapture.py';
+    const scriptPath = './../../Packet Capturing/packetCapturingAutomated.py';
 
     const scriptDirectory = path.dirname(scriptPath);
 

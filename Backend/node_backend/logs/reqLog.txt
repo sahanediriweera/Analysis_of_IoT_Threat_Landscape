@@ -14,3 +14,4 @@
 20230727	17:26:28	9a7ba1da-4680-495e-8085-00dd7958cb88	GET	undefined	/csv2fd
 20230727	17:33:48	e0eff1aa-ea3d-4e09-a0ac-44565617d557	GET	undefined	/trainmodel
 20230727	17:34:12	e0a25b50-6274-46ea-9308-b472ceecdd7d	GET	undefined	/inference
+20230728	10:40:45	2e775697-0a2c-4f8a-9c0e-09a3e7db809d	GET	undefined	/packet_capturing

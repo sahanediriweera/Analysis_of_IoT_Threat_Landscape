@@ -2,7 +2,6 @@ import subprocess
 
 def start_port_scan(ip_address):
     try:
-        # Run nmap command to scan the selected IP address for open ports
         nmap_command = f'nmap -p- {ip_address}'
         nmap_process = subprocess.Popen(nmap_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         nmap_output, nmap_error = nmap_process.communicate()
