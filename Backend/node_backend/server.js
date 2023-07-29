@@ -31,7 +31,13 @@ app.use('/packet_capturing',require('./routes/packet_capturing'));
 app.use('/network_scan',require('./routes/networkScan'));
 app.use('/port_scan',require('./routes/portScan'));
 app.use('/test_encryption',require('./routes/text_encryption'));
+
+
 app.use('/dictionary_attack',require('./routes/dictionaryAttack'));
+app.use('/ddos',require('./routes/ddos'));
+app.use('icmp',require('./routes/ICMP'));
+app.use('/syn',require('./routes/syn'));
+app.use('/udp',require('./routes/udp'));
 
 app.use('/pcap2csv',require('./routes/pcap2csv'));
 app.use('/csv2fd',require('./routes/csv2featureData'));
