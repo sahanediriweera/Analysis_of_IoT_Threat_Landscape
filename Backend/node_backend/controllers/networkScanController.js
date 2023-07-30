@@ -1,15 +1,16 @@
 const { spawn } = require('child_process');
 const path = require('path');
+const fsPromises = require('fs').promises;
 
-const handleGetRequest = (req, res) => {
-    res.send('it works');
+const handleGetRequest = async (req, res) => {
+
     const scriptPath = './../../Network Scan/networkScannerAutomation.py';
 
     const scriptDirectory = path.dirname(scriptPath);
 
     const scriptFileName = path.basename(scriptPath);
 
-    const childPython = spawn('python', [scriptFileName], { cwd: scriptDirectory });
+    const childPython = await spawn('python', [scriptFileName], { cwd: scriptDirectory });
 
     childPython.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
@@ -22,6 +23,16 @@ const handleGetRequest = (req, res) => {
     childPython.on('close', (code) => {
         console.log(`child process exited with code ${code}`);
     });
+
+    try{
+        const data = await fsPromises.readFile(path.join(__dirname,'..','..','..','Network Scan','connected_devices.json'),'utf8');
+        console.log(data);
+        res.json(data);
+    }catch(err){
+        console.log(err);
+        res.send("Bad Luck try again");
+    }
+
 };
 
 module.exports = handleGetRequest;
