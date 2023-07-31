@@ -30,6 +30,7 @@ app.use('/',require('./routes/root'));
 app.use('/network_scan',require('./routes/networkScan')); // gives ip address array
 app.use('/port_scan',require('./routes/portScan')); // gives open ports list
 app.use('/test_encryption',require('./routes/text_encryption')); //takes port and ip then gives a test description
+app.use('/device_scan',require('./routes/deviceScan'));
 
 
 app.use('/dictionary_attack',require('./routes/dictionaryAttack')); // takes a port and ip returns returns results json
