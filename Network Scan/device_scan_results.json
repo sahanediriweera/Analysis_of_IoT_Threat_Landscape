@@ -10,11 +10,5 @@
     "DeviceID": "2",
     "IPAddress": "172.19.208.1",
     "VendorInformation": "Microsoft Corporation"
-  },
-  {
-    "MACAddress": "00:15:5d:e6:43:46",
-    "DeviceID": "3",
-    "IPAddress": "172.19.208.1",
-    "VendorInformation": "Microsoft Corporation"
   }
 ]
