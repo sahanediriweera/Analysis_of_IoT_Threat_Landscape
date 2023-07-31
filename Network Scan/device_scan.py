@@ -2,6 +2,7 @@ import os
 import re
 import requests
 import subprocess
+import json
 
 def get_vendor_information(MAC_Address):
     # Use the macvendorlookup.com API to fetch vendor information
@@ -42,7 +43,7 @@ def get_device_info():
             
             device_info = {
                 "MACAddress": mac_address,
-                "DeviceID": device_id_counter,
+                "DeviceID": str(device_id_counter),
                 "IPAddress": ip_address,
                 "VendorInformation": vendor_information,
                
@@ -59,3 +60,9 @@ if __name__ == "__main__":
     connected_devices = get_device_info()
     for device in connected_devices:
         print(device)
+    output_file = "device_scan_results.json"
+    with open(output_file, "w") as f:
+        json.dump(connected_devices, f, indent=2)
+
+    print(f"Device information written to {output_file}.")
+

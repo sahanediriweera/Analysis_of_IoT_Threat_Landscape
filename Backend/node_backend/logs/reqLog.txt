@@ -85,3 +85,6 @@
 20230730	14:43:19	8d68d5f4-b46f-407d-8b9b-dec3a4505ae5	GET	undefined	/port_scan/192.168.2.1
 20230730	15:21:40	11bded8c-19d5-4d67-84b5-ca7125fa0a1c	GET	undefined	/dictionary_attack?ip=192.168.2.1&port=22
 20230730	15:27:03	fd9adccd-d8c6-4fa2-ac34-749282400d14	GET	undefined	/dictionary_attack?ip=192.168.2.1&port=22
+20230731	20:09:21	922e6227-0e33-40cd-b1ce-f978fe1c199e	GET	undefined	/device_scan
+20230731	20:09:28	ab11a144-f5f9-46b2-ae37-3dfef49bd1e4	GET	undefined	/device_scan
+20230731	20:09:55	dba920fe-5805-4f74-b91a-8103092463e5	GET	undefined	/device_scan
