@@ -1,0 +1,4 @@
+.custom-text-align {
+    text-align: justify;
+    text-align-last: center; /* Applies to the last line in case of uneven justification */
+  }

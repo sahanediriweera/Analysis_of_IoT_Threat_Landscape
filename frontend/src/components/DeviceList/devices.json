@@ -1,0 +1,39 @@
+[
+    {
+      "MACAddress": "00:1A:2B:3C:4D:5E",
+      "DeviceID": "Device123",
+      "IPAddress": "192.168.0.100",
+      "VendorInformation": "VendorXYZ",
+      "DeviceTypeAndModel": "camara",
+      "SoftwareAndFirmwareVersion": "v1.0",
+      "CommunicationProtocols": "Wi-Fi, Bluetooth",
+      "SensorsAndActuators": "Temperature, Humidity",
+      "PowerConsumptionPatterns": "Low power mode",
+      "BehavioralCharacteristics": "Responsive"
+    },
+    {
+      "MACAddress": "11:22:33:44:55:66",
+      "DeviceID": "Device456",
+      "IPAddress": "192.168.0.101",
+      "VendorInformation": "VendorABC",
+      "DeviceTypeAndModel": "smartwtch",
+      "SoftwareAndFirmwareVersion": "v2.0",
+      "CommunicationProtocols": "Zigbee",
+      "SensorsAndActuators": "Motion, Light",
+      "PowerConsumptionPatterns": "Sleep mode",
+      "BehavioralCharacteristics": "Efficient"
+    },
+    {
+      "MACAddress": "AA:BB:CC:DD:EE:FF",
+      "DeviceID": "Device789",
+      "IPAddress": "192.168.0.102",
+      "VendorInformation": "VendorPQR",
+      "DeviceTypeAndModel": "Smart Bulb",
+      "SoftwareAndFirmwareVersion": "v1.2",
+      "CommunicationProtocols": "LoRaWAN",
+      "SensorsAndActuators": "Pressure, Gas",
+      "PowerConsumptionPatterns": "Standby mode",
+      "BehavioralCharacteristics": "Stable"
+    }
+  ]
+  
