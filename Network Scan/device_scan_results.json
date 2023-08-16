@@ -1,14 +1,14 @@
 [
   {
-    "MACAddress": "00:15:5d:d9:ed:1d",
+    "MACAddress": "00:15:5d:70:74:e8",
     "DeviceID": "1",
-    "IPAddress": "172.19.220.243",
+    "IPAddress": "172.20.114.62",
     "VendorInformation": "Microsoft Corporation"
   },
   {
-    "MACAddress": "00:15:5d:e6:43:46",
+    "MACAddress": "00:15:5d:cc:e3:fc",
     "DeviceID": "2",
-    "IPAddress": "172.19.208.1",
+    "IPAddress": "172.20.112.1",
     "VendorInformation": "Microsoft Corporation"
   }
 ]

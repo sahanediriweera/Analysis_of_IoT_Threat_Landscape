@@ -110,11 +110,11 @@
 
   .device-name {
     position: absolute;
-    top: 50px;
-    left: 0;
-    width: 100%;
+    top: 20px;
+    left: 10px;
+    width: 170px;
     text-align: center;
-    font-size: 14px;
+    font-size: 20px;
     color: #fff;
     background-color: #007bff;
     padding: 10px;
@@ -150,7 +150,7 @@
   
   .dot {
     opacity: 0;
-    border: 3px solid #e0f4a5;
+    border: 10px solid #e0f4a5;
     border-radius: 100%;
     position:absolute;
     -webkit-animation: blink 2s ease-out;

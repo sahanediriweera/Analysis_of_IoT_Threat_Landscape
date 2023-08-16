@@ -1,14 +1,54 @@
 import React from 'react';
-import './RadarDisplay.css'; // Import the CSS file for the RadarDisplay component
+import { useLocation } from 'react-router-dom';
+import './RadarDisplay.css';
+import CryptoJS from 'crypto-js'; // Import crypto-js library
 
-const RadarDisplay = () => {
-  const devicesData = [
-    { id: 1, name: 'Camara', x: 600, y: 250 },
-    { id: 2, name: 'Switch', x: 70, y: 400 },
-    { id: 3, name: 'Device C', x: 250, y: 550 },
-    { id: 4, name: 'Device D', x: 300, y: 100 },
-    // Add more devices as needed
-  ];
+// Encryption key (Ideally, this should be stored securely on the server)
+const encryptionKey = 'YourEncryptionKey';
+
+// Function to encrypt data using AES
+function encryptData(data) {
+  return CryptoJS.AES.encrypt(JSON.stringify(data), encryptionKey).toString();
+}
+
+// Function to decrypt data using AES
+function decryptData(encryptedData) {
+  const bytes = CryptoJS.AES.decrypt(encryptedData, encryptionKey);
+  return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+}
+
+function RadarDisplay() {
+  // Get the deviceNames from the location state using useLocation hook
+  const { state } = useLocation();
+  const deviceNames = state && state.deviceNames;
+  console.log(deviceNames);
+
+  // Return early if deviceNames is undefined or null
+  if (!deviceNames) {
+    return null; // You can return some fallback JSX here if needed
+  }
+
+  // Assuming you have the getRandomCoordinate function defined somewhere else
+  function getRandomCoordinate() {
+    const maxX = 600;
+    const maxY = 600;
+    const x = Math.floor(Math.random() * maxX);
+    const y = Math.floor(Math.random() * maxY);
+    console.log(x);
+    return { x, y };
+  }
+
+  // Create devicesData array containing all device names and random coordinates
+  const devicesData = deviceNames.map((name, index) => {
+    const encryptedName = encryptData(name); // Encrypt the name
+    const encryptedIp = encryptData(name); // Encrypt the IP (For simplicity, I'm using the name as IP)
+    return {
+      id: index + 1,
+      name: encryptedName, // Store the encrypted name
+      ip: encryptedIp, // Store the encrypted IP
+      ...getRandomCoordinate(),
+    };
+  });
 
   return (
     <div className="razar">
@@ -19,13 +59,16 @@ const RadarDisplay = () => {
         <div></div>
       </div>
       {/* Map over the devices to display the device icons */}
-      {devicesData.map((device) => (
-        <div key={device.id} className="dot" style={{ left: `${device.x}px`, top: `${device.y}px` }}>
-          <span className="device-name">{device.name}</span>
-        </div>
-      ))}
+      {devicesData.map((device) => {
+        const decryptedName = decryptData(device.name); // Decrypt the name
+        return (
+          <div key={device.ip} className="dot" style={{ left: `${device.x}px`, top: `${device.y}px` }}>
+            <span className="device-name">{decryptedName}</span>
+          </div>
+        );
+      })}
     </div>
   );
-};
+}
 
 export default RadarDisplay;

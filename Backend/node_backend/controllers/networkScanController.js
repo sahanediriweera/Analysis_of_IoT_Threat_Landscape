@@ -10,7 +10,7 @@ const handleGetRequest = async (req, res) => {
 
     const scriptFileName = path.basename(scriptPath);
 
-    const childPython = await spawn('python', [scriptFileName], { cwd: scriptDirectory });
+    const childPython = await spawn('python3', [scriptFileName], { cwd: scriptDirectory });
 
     childPython.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);

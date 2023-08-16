@@ -14,8 +14,8 @@ def start_scan():
             for line in lines:
                 if 'Nmap scan report' in line:
                     data = line.split()
-                    ip_address = data[5]
-                    device_name = data[4] if len(data) > 5 else "Unknown"
+                    ip_address = data[4]
+                    device_name = data[5] if len(data) > 5 else "Unknown"
                     devices.append({'Device Name': device_name, 'IP': ip_address})
 
             for device in devices:
