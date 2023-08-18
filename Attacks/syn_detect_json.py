@@ -11,18 +11,25 @@ THRESHOLD = 10     # Maximum number of packets within the time interval
 packet_queue = deque(maxlen=MAX_PACKETS)
 start_time = time.time()
 syn_flood_detected = False
+detected_sources = set()  # Set to store unique source IPs of detected SYN floods
 
 # JSON file to log SYN flood events
-json_filename = "syn_flood_log_4.json"
+json_filename = "syn_flood_log.json"
 
 # Function to log SYN flood events to JSON file
 def log_syn_flood_event(src_ip, dst_ip):
-    flood_info = {"src_ip": src_ip, "dst_ip": dst_ip}
-    with open(json_filename, "a") as f:
-        json.dump(flood_info, f)
-        f.write("\n")
-    
-    print(f"SYN flood detected from {src_ip} to {dst_ip}")
+    if src_ip not in detected_sources:
+        event = {
+            "alert": "SYN flood detected",
+            "source_ip": src_ip,
+            "destination_ip": dst_ip
+        }
+        with open(json_filename, "a") as f:
+            json.dump(event, f)
+            f.write("\n")
+        
+        print(f"SYN flood detected from {src_ip} to {dst_ip}")
+        detected_sources.add(src_ip)
 
 def packet_handler(packet):
     global packet_queue, start_time, syn_flood_detected
@@ -44,4 +51,8 @@ def packet_handler(packet):
             syn_flood_detected = False
 
 # Start sniffing packets with a timeout of 60 seconds
-sniff(filter="tcp", prn=packet_handler, timeout=60)
+try:
+    sniff(filter="tcp", prn=packet_handler, timeout=60)
+except KeyboardInterrupt:
+    pass  # Allow the user to interrupt the sniffing process with Ctrl+C
+
