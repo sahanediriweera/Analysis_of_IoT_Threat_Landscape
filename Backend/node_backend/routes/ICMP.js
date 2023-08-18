@@ -3,7 +3,6 @@ const dictionaryAttackController = require('../controllers/ICMPController');
 const router = express.Router();
 
 
-router.get('/', dictionaryAttackController.handleGetRequestWithoutParams);
-router.get('/:ip',dictionaryAttackController.handleGetRequestWithParams );
+router.get('/', dictionaryAttackController);
 
 module.exports = router;

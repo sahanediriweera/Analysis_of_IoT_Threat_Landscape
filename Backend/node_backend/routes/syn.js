@@ -3,7 +3,6 @@ const dictionaryAttackController = require('../controllers/synController');
 const router = express.Router();
 
 
-router.get('/', dictionaryAttackController.handleGetRequestWithoutParams);
-router.get('/:ip/:port',dictionaryAttackController.handleGetRequestWithParams );
+router.get('/', dictionaryAttackController);
 
 module.exports = router;

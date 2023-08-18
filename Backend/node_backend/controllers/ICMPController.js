@@ -1,20 +1,16 @@
 const { spawn } = require('child_process');
 const path = require('path');
+const fsPromises = require('fs').promises;
 
-const handleGetRequestWithoutParams = (req, res) => {
+const handleGetRequest = async (req, res) => {
 
-    const ip = req.query.ip;
-
-    res.send(`IP: ${ipAddress}, Port: ${port}`);
-
-    const scriptPath = './../../Attacks/ICMPAutomated.py';
-
-    const scriptArgs = [ip];
+    const scriptPath = './../../Attacks/synAutmated.py';
 
     const scriptDirectory = path.dirname(scriptPath);
+
     const scriptFileName = path.basename(scriptPath);
 
-    const childPython = spawn('python', [scriptFileName, ...scriptArgs], { cwd: scriptDirectory });
+    const childPython = await spawn('python3', [scriptFileName], { cwd: scriptDirectory });
 
     childPython.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
@@ -27,34 +23,16 @@ const handleGetRequestWithoutParams = (req, res) => {
     childPython.on('close', (code) => {
         console.log(`child process exited with code ${code}`);
     });
-}
 
-const handleGetRequestWithParams = (req, res) => {
+    try{
+        const data = await fsPromises.readFile(path.join(__dirname,'..','..','..','Attacks','syn_flood_log.json'),'utf8');
+        console.log(data);
+        res.json(data);
+    }catch(err){
+        console.log(err);
+        res.send("Bad Luck try again");
+    }
 
-    const ip = req.params.ip;
+};
 
-    res.send(`IP: ${ipAddress}, Port: ${port}`);
-
-    const scriptPath = './../../Attacks/ICMPAutomated.py';
-
-    const scriptArgs = [ip];
-
-    const scriptDirectory = path.dirname(scriptPath);
-    const scriptFileName = path.basename(scriptPath);
-
-    const childPython = spawn('python', [scriptFileName, ...scriptArgs], { cwd: scriptDirectory });
-
-    childPython.stdout.on('data', (data) => {
-        console.log(`stdout: ${data}`);
-    });
-
-    childPython.stderr.on('data', (data) => {
-        console.error(`stderr: ${data}`);
-    });
-
-    childPython.on('close', (code) => {
-        console.log(`child process exited with code ${code}`);
-    });
-}
-
-module.exports = {handleGetRequestWithParams,handleGetRequestWithoutParams};
+module.exports = handleGetRequest;
