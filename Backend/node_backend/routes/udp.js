@@ -1,8 +1,8 @@
 const express = require('express');
-const dictionaryAttackController = require('../controllers/udpController');
+const udpAttackController = require('../controllers/udpController');
 const router = express.Router();
 
 
-router.get('/', dictionaryAttackController);
+router.get('/', udpAttackController);
 
 module.exports = router;

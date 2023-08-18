@@ -4,7 +4,7 @@ const fsPromises = require('fs').promises;
 
 const handleGetRequest = async (req, res) => {
 
-    const scriptPath = './../../Attacks/synAutmated.py';
+    const scriptPath = './../../Attacks/udpAutmated.py';
 
     const scriptDirectory = path.dirname(scriptPath);
 
@@ -25,7 +25,7 @@ const handleGetRequest = async (req, res) => {
     });
 
     try{
-        const data = await fsPromises.readFile(path.join(__dirname,'..','..','..','Attacks','syn_flood_log.json'),'utf8');
+        const data = await fsPromises.readFile(path.join(__dirname,'..','..','..','Attacks','udp_flood_alert.json'),'utf8');
         console.log(data);
         res.json(data);
     }catch(err){
