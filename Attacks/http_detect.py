@@ -12,6 +12,7 @@ alerts_sent = {}  # To track whether an alert has been sent for a specific sourc
 
 # Function to check and handle HTTP flood
 def check_http_flood(pkt):
+    print("came here")
     if IP in pkt and TCP in pkt:
         src_ip = pkt[IP].src
         dst_ip = pkt[IP].dst
@@ -30,6 +31,7 @@ def check_http_flood(pkt):
             if len(recent_requests) > RATE_LIMIT_THRESHOLD and src_ip not in alerts_sent:
                 alerts_sent[src_ip] = True
                 alert_info = {"src_ip": src_ip, "dst_ip": dst_ip}
+                
                 with open("alerts.json", "a") as f:
                     json.dump(alert_info, f)
                     f.write("\n")
