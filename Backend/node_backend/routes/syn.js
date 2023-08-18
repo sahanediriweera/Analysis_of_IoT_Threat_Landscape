@@ -1,8 +1,8 @@
 const express = require('express');
-const dictionaryAttackController = require('../controllers/synController');
+const synAttackController = require('../controllers/synController');
 const router = express.Router();
 
 
-router.get('/', dictionaryAttackController);
+router.get('/', synAttackController);
 
 module.exports = router;
