@@ -32,7 +32,7 @@ def check_http_flood(pkt):
                 alerts_sent[src_ip] = True
                 alert_info = {"src_ip": src_ip, "dst_ip": dst_ip}
                 
-                with open("alerts.json", "a") as f:
+                with open("http_alerts.json", "a") as f:
                     json.dump(alert_info, f)
                     f.write("\n")
                 print(f"HTTP flood detected from {src_ip} to {dst_ip}")

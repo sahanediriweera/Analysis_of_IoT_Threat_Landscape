@@ -4,7 +4,7 @@ const fsPromises = require('fs').promises;
 
 const handleGetRequest = async (req, res) => {
 
-    const scriptPath = './../../Attacks/udpAutmated.py';
+    const scriptPath = './../../Attacks/udpAutomated.py';
 
     const scriptDirectory = path.dirname(scriptPath);
 
