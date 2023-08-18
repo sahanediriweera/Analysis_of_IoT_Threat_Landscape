@@ -1,8 +1,8 @@
 const express = require('express');
-const dictionaryAttackController = require('../controllers/ICMPController');
+const ICMPAttackController = require('../controllers/ICMPController');
 const router = express.Router();
 
 
-router.get('/', dictionaryAttackController);
+router.get('/', ICMPAttackController);
 
 module.exports = router;

@@ -11,7 +11,7 @@ rate_limit = 50  # Packets per second
 notification_threshold = 60  # Notify if the rate exceeds this count
 
 # JSON file to log flood events
-json_filename = "icmp_flood_log_1.json"
+json_filename = "icmp_flood_log.json"
 
 # Function to log flood events to JSON file
 def log_flood_event(src_ip, dst_ip):
