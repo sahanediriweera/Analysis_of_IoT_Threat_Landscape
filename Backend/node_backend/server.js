@@ -35,6 +35,7 @@ app.use('/device_scan',require('./routes/deviceScan'));
 
 app.use('/dictionary_attack',require('./routes/dictionaryAttack')); // takes a port and ip returns returns results json
 app.use('/ddos',require('./routes/ddos')); //takes port and ip "ddos activated" open a new  file to new terminal
+app.use('/httpAttack',require('./routes/httpAttack')); //
 app.use('icmp',require('./routes/ICMP')); // only ip
 app.use('/syn',require('./routes/syn')); // ip and port
 app.use('/udp',require('./routes/udp')); // ip and port
