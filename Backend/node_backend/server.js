@@ -9,7 +9,7 @@ const errorHandler = require('./middleware/errorHandler');
 app.use(logger);
 
 // Cross Origin Resource Sharing
-const whitelist = [ 'http://localhost:3000' ,  'http://localhost:3001'];
+const whitelist = [ 'http://localhost:3000' ,  'http://localhost:3001','http://localhost:4000'];
 const corsOptions = {
     origin: (origin, callback) => {
         if (whitelist.indexOf(origin) !== -1 || !origin) {
