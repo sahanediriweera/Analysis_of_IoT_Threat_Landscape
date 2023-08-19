@@ -1,9 +1,8 @@
 const express = require('express');
-const dictionaryAttackController = require('../controllers/synController');
+const synAttackController = require('../controllers/synController');
 const router = express.Router();
 
 
-router.get('/', dictionaryAttackController.handleGetRequestWithoutParams);
-router.get('/:ip/:port',dictionaryAttackController.handleGetRequestWithParams );
+router.get('/', synAttackController);
 
 module.exports = router;
