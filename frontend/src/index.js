@@ -1,18 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import RadarDisplay from './components/RadarDisplay/RadarDisplay';
 import Feed from './components/Feed/Feed';
 import DeviceDetails from './components/DeviceList/DeviceList';
 import DeviceDetailPage from './components/DeviceIcon/DeviceDetailPage';
-
-const NotFound = () => {
-    return (
-      <p>404</p>
-    )
-}
+import Signup from './components/SignUp/SignUp';
+import Login from './components/Logout/Logout';
 
 const devices = [
   {
@@ -62,16 +58,16 @@ const devices = [
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
-      <Route exact path="/" element={<App />} >
-      
+      <Route path="/" element={<App />}>
         <Route index element={<Feed />} />
         <Route path="radarDisplay" element={<RadarDisplay />} />
-        {/* <Route path="deviceDetails" element={<DeviceDetails />} /> */}
-        <Route exact path="/deviceDetails" element={<DeviceDetails devices={devices} />} /> {/* Corrected component and devices prop */}
-        <Route path="/devices/:index" element={<DeviceDetailPage devices={devices} />} /> {/* Corrected component and devices prop */}
-        
+        <Route exact path="/deviceDetails" element={<DeviceDetails devices={devices} />} />
+        <Route path="/devices/:index" element={<DeviceDetailPage devices={devices} />} />
+        <Route path="/signup" element={<Signup /> }/>
+        <Route path="/login" element={<Login /> }/>
         
       </Route>
+      
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')
