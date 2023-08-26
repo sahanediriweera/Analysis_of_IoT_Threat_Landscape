@@ -6,7 +6,7 @@ const handleGetRequest = async (req, res) => {
 
     ip_address = req.query.ip;
 
-    const scriptPath = './../../Network Scan/deviceScanAutomation.py';
+    const scriptPath = './../../Network Scan/dnsLookUpAutomated.py';
 
     const scriptDirectory = path.dirname(scriptPath);
 
