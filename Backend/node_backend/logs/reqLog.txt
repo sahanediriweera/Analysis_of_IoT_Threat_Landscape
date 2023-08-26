@@ -882,3 +882,6 @@
 20230819	00:38:49	50841830-5fcc-4fde-8043-d25387a77e9d	GET	http://localhost:3001	/device_scan
 20230819	00:43:53	1e944a51-3cc2-46bc-86a7-93799c85d220	GET	http://localhost:3001	/network_scan
 20230819	00:51:45	43ac1256-e5ca-4ea6-a6de-dfd72f3feef8	GET	http://localhost:3001	/device_scan
+20230823	14:16:30	08e09aa2-230f-40aa-9978-f9aba5d8b7e6	GET	undefined	/device_scan
+20230823	14:16:58	9069407a-85a9-4204-988c-feca3c10f054	GET	undefined	/favicon.ico
+20230823	14:18:19	d0584edb-b781-4bc4-bb0b-b4402a0c0aff	GET	undefined	/device_scan
