@@ -15,7 +15,7 @@ def calculate_entropy(data):
     return entropy
 
 server = sys.argv[1]
-port = sys.argv[2]
+port = int(sys.argv[2])
 
 print(f"Listening for incoming messages on {server}:{port}...")
 irc_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
