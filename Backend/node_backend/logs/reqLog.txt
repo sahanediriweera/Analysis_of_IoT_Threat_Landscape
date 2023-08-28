@@ -887,3 +887,4 @@
 20230823	14:18:19	d0584edb-b781-4bc4-bb0b-b4402a0c0aff	GET	undefined	/device_scan
 20230826	09:01:27	7409744a-92e7-47a9-83b7-9fa05e399da9	GET	undefined	/dnslookup?ip=192.168.2.1
 20230826	09:01:47	978b8b4f-2dc1-4f96-a8f6-337a60816bc5	GET	undefined	/favicon.ico
+20230826	09:04:44	2c7f5afd-a87b-4a9c-9dc4-157c16353319	GET	undefined	/dnslookup?ip=192.168.2.1
