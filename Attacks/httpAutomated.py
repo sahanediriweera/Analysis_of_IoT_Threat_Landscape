@@ -1,7 +1,7 @@
 import os
 import sys
 
-def main(ip,port):
+def main():
     directory_path = r"./"
     script_path = os.path.join(directory_path, "http_detect.py")
 

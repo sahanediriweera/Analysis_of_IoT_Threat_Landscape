@@ -70,7 +70,7 @@ const DeviceDetailPage = () => {
   }
 
    const device = devices[index];
-  const deviceip = "192.168.2.1";
+  const deviceip = device.IPAddress;
 
   if (!device) {
     return <p>Device not found</p>;
