@@ -39,9 +39,9 @@ app.use('/httpAttack',require('./routes/httpAttack')); //
 app.use('icmp',require('./routes/ICMP')); // only ip
 app.use('/syn',require('./routes/syn')); // ip and port
 app.use('/udp',require('./routes/udp')); // ip and port
-app.use('/dnslookup',require('./routes/dnslookup'));
+app.use('/dnslookup',require('./routes/dnslookup')); //only ip
 
-app.use('/listen_last',require('./routes/listenLast'));
+app.use('/listen_last',require('./routes/listenLast')); // ip and port
 
 //ML Part 
 app.use('/packet_capturing',require('./routes/packet_capturing')); //

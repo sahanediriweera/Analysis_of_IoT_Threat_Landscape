@@ -893,3 +893,5 @@
 20230828	11:18:45	e9b4284f-f433-496e-a9e2-3d167799a68c	GET	undefined	/listen_last?ip=192.168.2.1&port=22
 20230828	11:18:57	bbfb37ae-a8fb-41a4-a2d6-c6a28884063e	GET	undefined	/device_scan
 20230828	11:20:03	c714ff72-4ab1-423f-b4ef-7e132ec7ea39	GET	undefined	/listen_last?ip=192.168.2.1&port=22
+20230828	11:22:52	9994cbbf-28a4-44ae-83ad-34c4d9630167	GET	undefined	/listen_last?ip=192.168.2.1&port=22
+20230828	16:59:10	38054c46-b18c-4174-a4ad-a50cc174c895	GET	undefined	/device_scan
