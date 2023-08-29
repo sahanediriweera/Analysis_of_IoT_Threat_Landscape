@@ -7,6 +7,8 @@ import Smartwatch from '../../assets/smartwatch.png';
 import Bulb from '../../assets/smartbulb.png';
 import Unknown from '../../assets/unknown.png';
 
+import { ThreeDots } from 'react-loader-spinner';
+
 const deviceTypeIcons = {
   "Camera": camara,
   "Smartwatch": Smartwatch,
@@ -48,7 +50,12 @@ const DeviceDetails = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        {/* Display a loading spinner */}
+        <ThreeDots color="#00BFFF" height={80} width={80} />
+      </div>
+    );
   }
 
   if (error) {
@@ -56,7 +63,8 @@ const DeviceDetails = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-gray-800 text-black align-middle border-radius overflow-y-auto" style={{ borderRadius: '10px' }}>
+    <div className="container mx-auto px-4 py-8  text-black align-middle border-radius style={{ borderRadius: '10px', marginTop: '1
+    50px' } " style={{ borderRadius: '10px' }}>
       <h1 className="text-3xl font-bold mb-4 text-white text-center">Devices Details</h1>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {devices.map((device, index) => (

@@ -6,6 +6,9 @@ import camara from '../../assets/cctv.png'
 import Smartwatch from '../../assets/smartwatch.png'
 import Bulb from '../../assets/smartbulb.png'
 import Unknown from '../../assets/unknown.png'
+import TestEncryption from '../TestEncrption/TestEncrption';
+import DDocAttack from '../DOoS_Attack/DDocAttack';
+import DNS from '../DNSlookUP/DNS'
 
 
 // Define a mapping of device types to image paths
@@ -64,19 +67,12 @@ const DeviceDetailPage = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-
-   const device = devices[index];
+  const device = devices[index];
   const deviceip = device.IPAddress;
 
   if (!device) {
     return <p>Device not found</p>;
   }
-
-  
 
   const scanPorts = async () => {
     try {
@@ -89,6 +85,8 @@ const DeviceDetailPage = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
       setScanning(false);
+      setError(error);
+      
     }
   };
 
@@ -137,6 +135,13 @@ const dictionaryAttack = async (e) => {
       return (
         <div>
           <div className="p-4 text-center ">
+
+          <div className="mt-8 text-left">
+              {/* Add error message and try again button here */}
+              {errordispay()}
+              {/* The rest of your tab content */}
+          </div>
+
             <h1 className="text-3xl font-bold mb-4">Open Ports</h1>
             <button
               className={`px-4 py-2 bg-blue-600 text-white rounded-md ${
@@ -222,20 +227,45 @@ const dictionaryAttack = async (e) => {
     } else if (activeTab === "ddos") {
       return (
         <div>
-          {/* DDos Content */}
+          <DDocAttack openPorts={openPorts} deviceip={deviceip} />
         </div>
       );
     } else if (activeTab === "testEncryption") {
       return (
         <div>
-          {/* Check the Test Encryption Content */}
+          <TestEncryption openPorts={openPorts} deviceip={deviceip} />
+        </div>
+      );
+    }else if (activeTab === "DNSLookUp") {
+      return (
+        <div>
+          <DNS openPorts={openPorts} deviceip={deviceip} />
+        </div>
+      );
+    }
+
+  };
+
+  const errordispay = () => {
+    if (error) {
+      return (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-70 backdrop-blur-lg">
+          <div className="bg-blue-100 p-4 rounded-lg">
+            <p className="text-blue-800">Error: {error.message}</p>
+            <button
+              className="mt-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+              onClick={() => setError(null)}
+            >
+              Try Again
+            </button>
+          </div>
         </div>
       );
     }
   };
 
   return (
-    <div className="container  mx-auto px-4 py-8 bg-gray-800 text-black rounded-lg">
+    <div className="container  mx-auto px-4 py-8  text-black rounded-lg">
       <div className="flex">
         <div className="w-1/4 pr-8">
           <h1 className="text-3xl font-bold mb-4 text-white text-center">Device Details</h1>
@@ -293,6 +323,14 @@ const dictionaryAttack = async (e) => {
                     onClick={() => handleTabClick("testEncryption")}
                   >
                     Check the Test Encryption
+                  </button>
+                  <button
+                    className={`w-1/4 m-1 px-4 py-2 rounded-md ${
+                      activeTab === "testEncryption" ? "bg-blue-600 text-white" : "bg-gray-200"
+                    } hover:bg-blue-600 hover:text-white focus:outline-none`}
+                    onClick={() => handleTabClick("DNSLookUp")}
+                  >
+                    DNSLookUp
                   </button>
                 </div>
 

@@ -22,14 +22,14 @@ const Header = ({ user }) => {
             </div>
             <nav className="flex space-x-4">
                 <NavLink
-                    to="/dashboard"
+                    to="/dnslookup"
                     activeClassName="text-white"
                     className="text-gray-300 hover:text-white"
                 >
                     Dashboard
                 </NavLink>
                 <NavLink
-                    to="/devices"
+                    to="/deviceList"
                     activeClassName="text-white"
                     className="text-gray-300 hover:text-white"
                 >

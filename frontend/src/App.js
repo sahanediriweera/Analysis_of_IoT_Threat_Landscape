@@ -11,7 +11,7 @@ const App = () => {
     <div className="app bg-gray-100 min-h-screen h-full">
       <div className="app bg-gray-100 min-h-screen flex flex-col">
         <Header user={user} />
-        <div style={{ backgroundColor: 'rgb(0, 0, 22)' }} className="flex justify-center items-center h-screen ">
+        <div style={{ backgroundColor: 'rgb(0, 0, 22)' }} className="  flex justify-center  h-screen mt-220">
           <Outlet />
         </div>
       </div>

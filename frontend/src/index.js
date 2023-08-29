@@ -9,51 +9,7 @@ import DeviceDetails from './components/DeviceList/DeviceList';
 import DeviceDetailPage from './components/DeviceIcon/DeviceDetailPage';
 import Signup from './components/SignUp/SignUp';
 import Login from './components/Logout/Logout';
-
-const devices = [
-  {
-    "MACAddress": "00:1A:2B:3C:4D:5E",
-    "DeviceID": "Device123",
-    "DeviceTypeAndModel": "Camera", // Categorized as "Camera"
-    "VendorInformation": "VendorXYZ",
-    "SoftwareAndFirmwareVersion": "v1.0",
-    // ... (other device properties)
-  },
-  {
-    "MACAddress": "11:22:33:44:55:66",
-    "DeviceID": "Device456",
-    "DeviceTypeAndModel": "Smartwatch", // Categorized as "Smartwatch"
-    "VendorInformation": "VendorABC",
-    "SoftwareAndFirmwareVersion": "v2.0",
-    // ... (other device properties)
-  },
-  {
-    "MACAddress": "77:88:99:AA:BB:CC",
-    "DeviceID": "Device789",
-    "DeviceTypeAndModel": "Unknown device",
-    // No DeviceTypeAndModel provided for this device (unknown device)
-    "VendorInformation": "VendorPQR",
-    "SoftwareAndFirmwareVersion": "v3.0",
-    // ... (other device properties)
-  },
-  {
-    "MACAddress": "77:88:99:AA:BB:CC",
-    "DeviceID": "Device789",
-    "DeviceTypeAndModel": "Unknown device",
-    // No DeviceTypeAndModel provided for this device (unknown device)
-    "VendorInformation": "VendorPQR",
-    "SoftwareAndFirmwareVersion": "v3.0",
-    // ... (other device properties)
-  },
-  {
-    "MACAddress": "77:88:99:AA:BB:CC",
-    "DeviceID": "Device789",
-    "DeviceTypeAndModel": "Smart Bulb", // Categorized as "Smart Bulb"
-    "VendorInformation": "VendorPQR",
-    "SoftwareAndFirmwareVersion": "v3.0",
-    // ... (other device properties)
-  },
-];
+import DNSLookUp from './components/DNSlookUP/DNS'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -61,11 +17,11 @@ ReactDOM.render(
       <Route path="/" element={<App />}>
         <Route index element={<Feed />} />
         <Route path="radarDisplay" element={<RadarDisplay />} />
-        <Route exact path="/deviceDetails" element={<DeviceDetails devices={devices} />} />
-        <Route path="/devices/:index" element={<DeviceDetailPage devices={devices} />} />
+        <Route exact path="/dnslookup" element={<DNSLookUp/>} />
+        <Route exact path="/deviceList" element={<DeviceDetails  />} />
+        <Route path="/devices/:index" element={<DeviceDetailPage  />} />
         <Route path="/signup" element={<Signup /> }/>
         <Route path="/login" element={<Login /> }/>
-        
       </Route>
       
     </Routes>
