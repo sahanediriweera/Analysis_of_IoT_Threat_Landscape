@@ -2,7 +2,7 @@ import subprocess
 import re
 import json
 
-read_command = "tcpdump -r dns_traffic_1.pcap"
+read_command = "tcpdump -r dns_traffic_5.pcap"
 output = subprocess.run(read_command, shell=True, capture_output=True, text=True).stdout
 
 # Write tcpdump output to a file
