@@ -896,3 +896,4 @@
 20230828	11:22:52	9994cbbf-28a4-44ae-83ad-34c4d9630167	GET	undefined	/listen_last?ip=192.168.2.1&port=22
 20230828	16:59:10	38054c46-b18c-4174-a4ad-a50cc174c895	GET	undefined	/device_scan
 20230829	22:04:07	0d506fb0-d210-4d0f-879e-5ba8faaaa681	GET	undefined	/dnslookup?ip=192.168.2.1
+20230829	22:39:40	47dd39a5-f162-4e60-8981-9b1cef35110b	GET	undefined	/dnslookup?ip=192.168.2.1
