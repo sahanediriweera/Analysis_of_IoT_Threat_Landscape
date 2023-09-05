@@ -6,9 +6,10 @@ const DnsLookupComponent = () => {
   const [domainNames, setDomainNames] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/dnslookup/${}')
+    axios.get('http://localhost:3000/dnslookup/${ip}')
       .then(response => {
         setDomainNames(JSON.parse(response.data.domain_names));
+        console.log(response);
         setLoading(false);
       })
       .catch(error => {
