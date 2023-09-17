@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
+import { BASE_URL } from '../../../src/config'; 
 import camara from '../../assets/cctv.png';
 import Smartwatch from '../../assets/smartwatch.png';
 import Bulb from '../../assets/smartbulb.png';
@@ -25,7 +25,7 @@ const DeviceDetails = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('http://localhost:3000/device_scan');
+        const response = await axios.get(`${BASE_URL}device_scan`);
 
         if (response.status !== 200) {
           throw new Error(`Request failed with status: ${response.status}`);

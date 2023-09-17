@@ -1,0 +1,8 @@
+15:28:34.567696 IP 172.28.132.233.51600 > 172.18.16.1.domain: Flags [S], seq 3097630111, win 64240, options [mss 1460,sackOK,TS val 2864525396 ecr 0,nop,wscale 7], length 0
+15:28:34.597506 IP 172.18.16.1.domain > 172.28.132.233.51600: Flags [R.], seq 0, ack 3097630112, win 0, length 0
+15:28:55.734907 IP 172.28.132.233.38988 > 172.18.16.1.domain: Flags [S], seq 2646607861, win 64240, options [mss 1460,sackOK,TS val 2864546563 ecr 0,nop,wscale 7], length 0
+15:28:55.916689 IP 172.18.16.1.domain > 172.28.132.233.38988: Flags [R.], seq 0, ack 2646607862, win 0, length 0
+15:28:58.153652 IP 172.28.132.233.49928 > 172.18.16.1.domain: Flags [S], seq 3386596689, win 64240, options [mss 1460,sackOK,TS val 2864548982 ecr 0,nop,wscale 7], length 0
+15:28:58.171439 IP 172.18.16.1.domain > 172.28.132.233.49928: Flags [R.], seq 0, ack 3386596690, win 0, length 0
+15:29:02.829352 IP 172.28.132.233.49622 > 172.18.16.1.domain: Flags [S], seq 1580291006, win 64240, options [mss 1460,sackOK,TS val 2864553658 ecr 0,nop,wscale 7], length 0
+15:29:02.845335 IP 172.18.16.1.domain > 172.28.132.233.49622: Flags [R.], seq 0, ack 1580291007, win 0, length 0

@@ -1,10 +1,11 @@
 import React from 'react'
+import { BASE_URL } from '../../../src/config'; 
 
     const dictionaryAttack = async (e) => {
         e.preventDefault(); // Prevent form submission
         
         try {
-          const response = await axios.get(`http://localhost:3000/dictionary_attack?ip=${deviceip}&port=${port}`);
+          const response = await axios.get(`${BASE_URL}dictionary_attack?ip=${deviceip}&port=${port}`);
           const responseData = JSON.parse(response.data);
       
           console.log("Response Data:", responseData); // Log the responseData to see its structure

@@ -9,6 +9,7 @@ import Unknown from '../../assets/unknown.png'
 import TestEncryption from '../TestEncrption/TestEncrption';
 import DDocAttack from '../DOoS_Attack/DDocAttack';
 import DNS from '../DNSlookUP/DNS'
+import { BASE_URL } from '../../../src/config'; 
 
 
 // Define a mapping of device types to image paths
@@ -40,7 +41,7 @@ const DeviceDetailPage = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('http://localhost:3000/device_scan');
+        const response = await axios.get(`${BASE_URL}device_scan`);
 
         if (response.status !== 200) {
           throw new Error(`Request failed with status: ${response.status}`);
@@ -77,7 +78,7 @@ const DeviceDetailPage = () => {
   const scanPorts = async () => {
     try {
       setScanning(true);
-      const response = await axios.get(`http://localhost:3000/port_scan?ip=${deviceip}`);
+      const response = await axios.get(`${BASE_URL}port_scan?ip=${deviceip}`);
       const responseData = JSON.parse(response.data);
       const openPortArray = responseData[deviceip] || [];
       setOpenPorts(openPortArray);
@@ -96,7 +97,7 @@ const dictionaryAttack = async (e) => {
   e.preventDefault(); // Prevent form submission
   
   try {
-    const response = await axios.get(`http://localhost:3000/dictionary_attack?ip=${ip}&port=${port}`);
+    const response = await axios.get(`dictionary_attack?ip=${ip}&port=${port}`);
     const responseData = JSON.parse(response.data);
 
     console.log("Response Data:", responseData); // Log the responseData to see its structure

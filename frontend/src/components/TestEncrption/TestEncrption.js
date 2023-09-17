@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { BASE_URL } from '../../../src/config'; 
 
 const TestEncryption = ({ openPorts, deviceip }) => {
-  const [ip, setIp] = useState('');
+  
   const [port, setPort] = useState('');
   const [data, setData] = useState(null);
 
   const handleListen = () => {
-    axios.get(`http://localhost:3000/listen_last?ip=${ip}&port=${port}`)
+    axios.get(`${BASE_URL}listen_last?ip=${deviceip}&port=${port}`)
       .then(response => {
         setData(response.data);
       })

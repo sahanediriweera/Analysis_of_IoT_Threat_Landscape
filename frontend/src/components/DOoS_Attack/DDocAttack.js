@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { BASE_URL } from '../../../src/config'; 
 
 const AttackComponent = ({ openPorts, deviceip }) => {
   const [port, setPort] = useState('');
@@ -11,7 +12,7 @@ const AttackComponent = ({ openPorts, deviceip }) => {
     setLoading(true);
 
     try {
-      const response = await axios.get(`http://localhost:3000/${attackType}`, {
+      const response = await axios.get(`${BASE_URL}${attackType}`, {
         params: {
           ipAddress: deviceip, // Use the deviceip prop
           port,
