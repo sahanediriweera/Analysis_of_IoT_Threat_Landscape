@@ -6,7 +6,7 @@ import json
 # Parameters for flood detection
 MAX_PACKETS = 100  # Number of packets to keep in the queue
 TIME_INTERVAL = 2  # Time interval in seconds
-THRESHOLD = 50     # Maximum number of packets within the time interval
+THRESHOLD = 20     # Maximum number of packets within the time interval
 TIMEOUT = 60       # Timeout for packet sniffing in seconds
 
 packet_queue = deque(maxlen=MAX_PACKETS)

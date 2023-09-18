@@ -13,7 +13,7 @@ start_time = time.time()
 syn_flood_detected = False
 
 # JSON file to log SYN flood events
-json_filename = "syn_flood_log_4.json"
+json_filename = "syn_flood_log.json"
 
 # Function to log SYN flood events to JSON file
 def log_syn_flood_event(src_ip, dst_ip):

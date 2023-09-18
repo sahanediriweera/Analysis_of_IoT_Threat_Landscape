@@ -6,7 +6,7 @@ def main(ip,port):
     script_path = os.path.join(directory_path, "dictionary_attack.py")
 
 
-    os.system(f"python {script_path} {ip} {port}")
+    os.system(f"python3 {script_path} {ip} {port}")
 
 
 if __name__ == "__main__":
