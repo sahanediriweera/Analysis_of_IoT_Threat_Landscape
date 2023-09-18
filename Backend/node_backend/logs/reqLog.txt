@@ -897,3 +897,6 @@
 20230828	16:59:10	38054c46-b18c-4174-a4ad-a50cc174c895	GET	undefined	/device_scan
 20230829	22:04:07	0d506fb0-d210-4d0f-879e-5ba8faaaa681	GET	undefined	/dnslookup?ip=192.168.2.1
 20230829	22:39:40	47dd39a5-f162-4e60-8981-9b1cef35110b	GET	undefined	/dnslookup?ip=192.168.2.1
+20230905	12:58:19	c44e8704-ffe5-43f2-b318-997250a1095e	GET	undefined	/listen_last?ip=192.168.2.1&port=81
+20230905	12:58:24	0de4c5c8-599a-4bcb-bdb4-209d0e0122b0	GET	undefined	/favicon.ico
+20230905	13:01:22	36ca5906-8a76-42fb-93bc-49b511bdf10d	GET	undefined	/listen_last?ip=192.168.2.1&port=81
