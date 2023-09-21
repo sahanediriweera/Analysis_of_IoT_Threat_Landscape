@@ -1,7 +1,7 @@
 import subprocess
 
 def run_python_script():
-    python_script_path = 'syn_flood_detection_json.py'  # Replace 'syn_flood_detection_json.py' with the path to your Python script
+    python_script_path = './syn_flood_detection_json.py'  # Replace 'syn_flood_detection_json.py' with the path to your Python script
     
     try:
         subprocess.run(['python', python_script_path], check=True)
