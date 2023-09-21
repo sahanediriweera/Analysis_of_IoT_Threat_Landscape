@@ -1,23 +1,16 @@
-import os
 import subprocess
-import sys
-import platform
 
-def run_python_script_in_new_terminal_with_sudo(script_path):
-    if platform.system() == "Windows":
-        print("This script is designed for Unix-based systems and cannot be run on Windows.")
-    elif platform.system() == "Darwin":  # macOS
-        subprocess.Popen(["sudo", "open", "-a", "Terminal", "python3", script_path])
-    elif platform.system() == "Linux":  # Linux
-        subprocess.Popen(["x-terminal-emulator", "-e", "sudo", "python3", script_path])
+def run_python_script():
+    python_script_path = 'syn_flood_detection_json.py'  # Replace 'syn_flood_detection_json.py' with the path to your Python script
+    
+    try:
+        subprocess.run(['python', python_script_path], check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Error occurred while running the Python script: {e}")
+    except FileNotFoundError:
+        print(f"Python script '{python_script_path}' not found.")
     else:
-        print("Unsupported operating system")
-
-def main():
-    directory_path = r"./"
-    script_path = os.path.join(directory_path, "syn_flood_detection_json.py")
-
-    run_python_script_in_new_terminal_with_sudo(script_path)
+        print("Python script ran successfully.")
 
 if __name__ == "__main__":
-    main()
+    run_python_script()
