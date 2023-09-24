@@ -1,6 +1,4 @@
 #!/bin/bash
 
-# Task 1: Run a Python script
-nohup python3 ./http_detect.py &
-
-echo "Tasks started in the background."
+# Open a new terminal and run your Python script
+gnome-terminal -- bash -c "python3 ./http_detect.py; exec bash"
