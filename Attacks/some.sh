@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Replace 'your_python_script.py' with the actual name of your Python script
-python_script="http_detect.py"
+python_script="your_python_script.py"
 
 # Check if the Python script file exists
 if [ ! -f "$python_script" ]; then
@@ -9,12 +9,8 @@ if [ ! -f "$python_script" ]; then
     exit 1
 fi
 
-# Set the terminal emulator command based on your system
-# For GNOME-based systems (e.g., Ubuntu):
-terminal_cmd="gnome-terminal -- python3 $python_script"
-
-# For systems with X Window System (generic):
-# terminal_cmd="xterm -e python3 $python_script"
+# Set the terminal emulator command based on 'x-terminal-emulator'
+terminal_cmd="x-terminal-emulator -e python3 $python_script"
 
 # Execute the terminal command
 $terminal_cmd
