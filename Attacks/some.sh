@@ -1,16 +1,10 @@
 #!/bin/bash
 
-# Replace 'your_python_script.py' with the actual name of your Python script
-python_script="your_python_script.py"
+# Specify the Python script you want to run
+python_script="http_detect.py"
 
-# Check if the Python script file exists
-if [ ! -f "$python_script" ]; then
-    echo "Error: The Python script '$python_script' does not exist."
-    exit 1
-fi
+# Run the Python script with nohup and redirect output to a log file
+nohup python "$python_script" > script.log 2>&1 &
 
-# Set the terminal emulator command based on 'x-terminal-emulator'
-terminal_cmd="x-terminal-emulator -e python3 $python_script"
-
-# Execute the terminal command
-$terminal_cmd
+# Print a message to indicate that the script has been started
+echo "Running $python_script in the background. Check script.log for output."
