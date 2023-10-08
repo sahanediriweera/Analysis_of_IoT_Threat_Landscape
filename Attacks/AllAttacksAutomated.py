@@ -1,6 +1,6 @@
 import subprocess
 
-python_script = "your_script.py"
+python_script = "startAttackScans.py"
 
 command = f"nohup python {python_script} > script.log 2>&1 &"
 

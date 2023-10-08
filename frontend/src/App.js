@@ -4,14 +4,14 @@ import Header from './components/Header/Header';
 import {Footer} from './components/Footer/Footer'; // Import the Footer component
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from './firebase';
-import { notifications } from './components/Notifications/notification';
+import {initializeAttackScanner as startNotifications} from './components/Notifications/startNotifications.js';
 import { useEffect } from 'react';
 
 
 const App = () => {
   const [user] = useAuthState(auth);
   useEffect(() => {
-    notifications();
+    startNotifications();
   }, []);
 
   return (
