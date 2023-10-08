@@ -56,6 +56,8 @@ app.use('/synNotification',require('./routes/synNotifications')); // gives syn a
 app.use('/udpNotification',require('./routes/udpNotifications')); // gives udp alerts json
 app.use('/ICMPNotification',require('./routes/ICMPNotifications')); // gives ICMP alerts json
 
+app.use('/initialize_attack_detection',require('./routes/initializeAttackDetection')); // starts attack detection
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 

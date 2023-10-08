@@ -13,7 +13,7 @@ function fetchDataAndLog(attacName) {
     })
     .catch((error) => {
       // Handle any errors
-      NotificationManager.info('No Attacks', `${attacName}`, 5000);
+      NotificationManager.info(`${attacName}`.toUpperCase() , 'No Attacks', 5000);
     });
 }
 
