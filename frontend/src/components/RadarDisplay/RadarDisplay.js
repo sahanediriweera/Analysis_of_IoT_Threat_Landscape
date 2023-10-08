@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './RadarDisplay.css';
 import CryptoJS from 'crypto-js'; // Import crypto-js library
+import logo from '../../assets/router.png'
 
 // Encryption key (Ideally, this should be stored securely on the server)
 const encryptionKey = 'YourEncryptionKey';
@@ -20,7 +21,8 @@ function decryptData(encryptedData) {
 function RadarDisplay() {
   // Get the deviceNames from the location state using useLocation hook
   const { state } = useLocation();
-  const deviceNames = state && state.deviceNames;
+  const deviceNames = state && state.deviceNames ;
+  const deviceIP = state && state.deviceIP;
   console.log(deviceNames);
 
   // Return early if deviceNames is undefined or null
@@ -29,12 +31,25 @@ function RadarDisplay() {
   }
 
   // Assuming you have the getRandomCoordinate function defined somewhere else
+  const xCoordinates = [100, 100, 250, 600, 450,500,600,330,350];
+  const yCoordinates = [500, 300, 75, 400, 600,100,250,200,450];
+
+  // Initialize current index for coordinates
+  let currentCoordinateIndex = 0;
+
+  // Modified getRandomCoordinate function to return coordinates one by one
   function getRandomCoordinate() {
-    const maxX = 600;
-    const maxY = 600;
-    const x = Math.floor(Math.random() * maxX);
-    const y = Math.floor(Math.random() * maxY);
-    console.log(x);
+    if (currentCoordinateIndex >= xCoordinates.length) {
+      // Reset index when it exceeds the array length (you can modify this behavior if needed)
+      currentCoordinateIndex = 0;
+    }
+
+    const x = xCoordinates[currentCoordinateIndex];
+    const y = yCoordinates[currentCoordinateIndex];
+    
+    // Increment the index for the next call
+    currentCoordinateIndex++;
+
     return { x, y };
   }
 
@@ -50,6 +65,8 @@ function RadarDisplay() {
     };
   });
 
+  
+
   return (
     <div className="razar">
       <div className="ringbase ring1"></div>
@@ -58,10 +75,16 @@ function RadarDisplay() {
       <div className="pointer">
         <div></div>
       </div>
+      <div className="center-point" style={{ width: '150px', height: '150px' }}>
+        <img src={logo} alt="Center Image" />
+      </div>
+      
       {/* Map over the devices to display the device icons */}
       {devicesData.map((device) => {
         const decryptedName = decryptData(device.name); // Decrypt the name
         return (
+          
+          
           <div key={device.ip} className="dot" style={{ left: `${device.x}px`, top: `${device.y}px` }}>
             <span className="device-name">{decryptedName}</span>
           </div>

@@ -2,25 +2,38 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
 import './Feed.css';
-import ParticleAnimation from 'react-particle-animation';
+
+import { BASE_URL } from '../../../src/config';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from './../../firebase';
 
 function Feed() {
   const navigate = useNavigate();
   const [devices, setDevices] = useState([]);
   const [deviceNames, setDeviceNames] = useState([]);
+  
+  // Move useAuthState hook call to the top level of the functional component
+  const [user] = useAuthState(auth);
 
   async function ClickHandle() {
-    
+    // Check if the user is logged in
+    if (!user) {
+      // User is not logged in, redirect to the login page
+      navigate('/login'); // Replace '/login' with your actual login route
+      return; // Exit the function to prevent further execution
+    }
+
     try {
-      const response = await axios.get('http://localhost:3000/network_scan');
+      const response = await axios.get(`${BASE_URL}network_scan`);
       console.log(response);
-      
+
       try {
         const parsedData = JSON.parse(response.data);
         // Step 2: Extract all "Device Name" values
         const deviceNames = parsedData.map(item => item["Device Name"]);
+        const deviceIP = parsedData.map(item => item["IP"]);
         console.log(deviceNames);
-        navigate('/radarDisplay', { state: { deviceNames } });
+        navigate('/radarDisplay', { state: { deviceNames, deviceIP } });
       } catch (jsonParseError) {
         console.error('Error occurred while parsing JSON data:', jsonParseError);
       }
@@ -28,7 +41,6 @@ function Feed() {
       console.error('Error occurred while making the API request:', error);
     }
   }
-  
 
   return (
     <div className="p-40 flex justify-center items-center h-screen flex flex-col">
