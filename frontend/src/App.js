@@ -5,6 +5,7 @@ import {Footer} from './components/Footer/Footer'; // Import the Footer componen
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from './firebase';
 import { notifications } from './components/Notifications/notification';
+import { useEffect } from 'react';
 
 
 const App = () => {
