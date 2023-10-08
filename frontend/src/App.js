@@ -4,10 +4,14 @@ import Header from './components/Header/Header';
 import {Footer} from './components/Footer/Footer'; // Import the Footer component
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from './firebase';
+import { notifications } from './components/Notifications/notification';
 
 
 const App = () => {
   const [user] = useAuthState(auth);
+  useEffect(() => {
+    notifications();
+  }, []);
 
   return (
     <div className="app bg-gray-100 min-h-screen h-full flex flex-col">
