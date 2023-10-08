@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
+import logo from '../../assets/CyberIot.png'
 
 const Header = ({ user }) => {
     const handleLogout = async () => {
@@ -17,19 +18,20 @@ const Header = ({ user }) => {
         <header className="bg-blue-500 p-4 flex justify-between items-center">
             <div className="flex items-center">
                 <Link to="/" className="text-white text-lg font-semibold">
-                    IoT Threat Analysis
+                <img src={logo} alt="IoT Threat Analysis" className="w-12" />
+                    
                 </Link>
             </div>
             <nav className="flex space-x-4">
                 <NavLink
-                    to="/dashboard"
+                    to="/dnslookup"
                     activeClassName="text-white"
                     className="text-gray-300 hover:text-white"
                 >
                     Dashboard
                 </NavLink>
                 <NavLink
-                    to="/devices"
+                    to="/deviceList"
                     activeClassName="text-white"
                     className="text-gray-300 hover:text-white"
                 >

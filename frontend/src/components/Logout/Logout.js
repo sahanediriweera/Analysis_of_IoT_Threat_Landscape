@@ -34,7 +34,7 @@ const Login = () => {
             <main>
                 <section className="flex justify-center items-center h-screen">
                     <div className="max-w-md p-4 bg-white shadow-lg rounded-lg">
-                        <h1 className="text-2xl font-semibold mb-4">FocusApp Login</h1>
+                        <h1 className="text-2xl font-semibold mb-4">Login</h1>
                         <form>
                             <div className="mb-3">
                                 <label htmlFor="email-address">Email address</label>
