@@ -50,8 +50,10 @@ app.use('/csv2fd',require('./routes/csv2featureData'));
 app.use('/trainmodel',require('./routes/trainmodel'));
 app.use('/inference',require('./routes/inference'));
 
-
-  
+app.use('/httpNotification',require('./routes/httpNotifications')); // gives http alerts json
+app.use('/synNotification',require('./routes/synNotifications')); // gives syn alerts json
+app.use('/udpNotification',require('./routes/udpNotifications')); // gives udp alerts json
+app.use('/ICMPNotification',require('./routes/ICMPNotifications')); // gives ICMP alerts json
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
