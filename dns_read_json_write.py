@@ -2,13 +2,13 @@ import subprocess
 import re
 import json
 
-read_command = "tcpdump -r dns_traffic_5.pcap"
+read_command = "tcpdump -r dns_traffic_1.pcap"
 output = subprocess.run(read_command, shell=True, capture_output=True, text=True).stdout
 
 # Write tcpdump output to a file
 with open("output_4.txt", "w") as output_file:
     output_file.write(output)
-
+    
 # Extract domain names from the output using grep and regular expressions
 pattern = r'\b[A-Za-z0-9.-]+\.com\b'
 domain_names = re.findall(pattern, output)

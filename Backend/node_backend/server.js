@@ -39,9 +39,10 @@ app.use('/httpAttack',require('./routes/httpAttack')); //
 app.use('icmp',require('./routes/ICMP')); // only ip
 app.use('/syn',require('./routes/syn')); // ip and port
 app.use('/udp',require('./routes/udp')); // ip and port
-app.use('/dnslookup',require('./routes/dnslookup'));
 
-app.use('/listen_last',require('./routes/listenLast'));
+app.use('/dnslookup',require('./routes/dnslookup')); //only ip
+
+app.use('/listen_last',require('./routes/listenLast')); // ip and port
 
 //ML Part 
 app.use('/packet_capturing',require('./routes/packet_capturing')); //
@@ -50,8 +51,10 @@ app.use('/csv2fd',require('./routes/csv2featureData'));
 app.use('/trainmodel',require('./routes/trainmodel'));
 app.use('/inference',require('./routes/inference'));
 
-
-  
+app.use('/httpNotification',require('./routes/httpNotifications')); // gives http alerts json
+app.use('/synNotification',require('./routes/synNotifications')); // gives syn alerts json
+app.use('/udpNotification',require('./routes/udpNotifications')); // gives udp alerts json
+app.use('/ICMPNotification',require('./routes/ICMPNotifications')); // gives ICMP alerts json
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

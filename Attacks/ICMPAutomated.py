@@ -6,7 +6,7 @@ def main(ip):
     script_path = os.path.join(directory_path, "ICMP.py")
 
 
-    os.system(f"python {script_path} {ip}")
+    os.system(f"python3 {script_path} {ip}")
 
 
 if __name__ == "__main__":

@@ -12,7 +12,7 @@ alerts_sent = {}  # To track whether an alert has been sent for a specific sourc
 
 # Function to check and handle HTTP flood
 def check_http_flood(pkt):
-    print("came here")
+    #print("came here")
     if IP in pkt and TCP in pkt:
         src_ip = pkt[IP].src
         dst_ip = pkt[IP].dst

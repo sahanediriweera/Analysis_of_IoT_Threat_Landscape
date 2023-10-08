@@ -1,51 +1,66 @@
-from scapy.all import sniff, IP, ICMP
-import time
+import socket
+import struct
 import json
+import time
 
-# Initialize variables for flood detection
-packet_count = 0
-packet_queue = []
+# Define the timeout in seconds
+timeout = 60
 
-# Rate limit and notification threshold
-rate_limit = 50  # Packets per second
-notification_threshold = 60  # Notify if the rate exceeds this count
+# Create a UDP socket to listen for ICMP packets
+sock = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_ICMP)
 
-# JSON file to log flood events
-json_filename = "icmp_flood_log.json"
+# Set the socket timeout to implement the timeout feature
+sock.settimeout(timeout)
 
-# Function to log flood events to JSON file
-def log_flood_event(src_ip, dst_ip):
-    flood_info = {"src_ip": src_ip, "dst_ip": dst_ip, "timestamp": time.time()}
-    with open(json_filename, "a") as f:
-        json.dump(flood_info, f)
-        f.write("\n")
+# Create a dictionary to store the count of ICMP packets from each source IP
+icmp_count = {}
 
-# Function to process captured packets
-def process_packet(packet):
-    global packet_count, packet_queue
+try:
+    start_time = time.time()
+    while True:
+        # Receive an ICMP packet
+        packet, addr = sock.recvfrom(1024)
+        
+        # Calculate the elapsed time
+        elapsed_time = time.time() - start_time
+        
+        # Check if the elapsed time exceeds the timeout
+        if elapsed_time > timeout:
+            print("Timeout reached. Exiting.")
+            break
+        
+        # Unpack the ICMP packet header (first 20 bytes)
+        icmp_header = struct.unpack('!BBHHH', packet[:8])
+        
+        # Extract the source IP address from the packet
+        src_ip = socket.inet_ntoa(struct.pack("!I", struct.unpack("!I", packet[12:16])[0]))
+        
+        # Update the ICMP count for the source IP
+        if src_ip in icmp_count:
+            icmp_count[src_ip] += 1
+        else:
+            icmp_count[src_ip] = 1
+        
+        # Check if the ICMP packet count exceeds a threshold (e.g., 100 packets)
+        threshold = 100
+        if icmp_count[src_ip] > threshold:
+            print(f"ICMP flood rate exceeded from {src_ip}")
+            
+            # Create a JSON object with relevant information
+            attack_info = {
+                "src_ip": src_ip,
+                "des_ip": socket.gethostbyname(socket.gethostname()),  # Replace with your destination IP
+                "message": "ICMP flood attack detection",
+            }
+            
+            # Write the JSON object to a file
+            with open("icmp_flood_log.json", "w") as json_file:
+                json.dump(attack_info, json_file, indent=4)
+                
+            print(f"ICMP flood attack information written to icmp_flood_log.json")
+        
+except KeyboardInterrupt:
+    print("Keyboard interrupt. Exiting.")
+finally:
+    sock.close()
 
-    if packet.haslayer(ICMP):
-        icmp_packet = packet[ICMP]
-        if icmp_packet.type == 8:  # ICMP Echo Request (ping)
-            packet_count += 1
-            packet_queue.append(time.time())
-
-            # Remove timestamps older than 1 second from the queue
-            current_time = time.time()
-            packet_queue = [ts for ts in packet_queue if current_time - ts <= 1]
-
-            # Check if the packet rate exceeds the limit
-            if len(packet_queue) >= rate_limit:
-                print("ICMP flood rate exceeded!")
-                if packet_count >= notification_threshold:
-                    print("Notifying user...")  # Add your notification code here
-                    # Assuming you want to log only if the flood event is severe
-                    log_flood_event(packet[IP].src, packet[IP].dst)
-
-                # Reset packet count and queue
-                packet_count = 0
-                packet_queue.clear()
-
-# Sniff network traffic and call the process_packet function
-# Filter for ICMP traffic (adjust filters as needed)
-sniff(filter="icmp", prn=process_packet, timeout=60)
