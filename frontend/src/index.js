@@ -10,6 +10,9 @@ import DeviceDetailPage from './components/DeviceIcon/DeviceDetailPage';
 import Signup from './components/SignUp/SignUp';
 import Login from './components/Logout/Logout';
 
+import 'react-notifications/lib/notifications.css';
+import { NotificationContainer } from 'react-notifications';
+
 const devices = [
   {
     "MACAddress": "00:1A:2B:3C:4D:5E",
@@ -69,6 +72,7 @@ ReactDOM.render(
       </Route>
       
     </Routes>
+    <NotificationContainer/>
   </BrowserRouter>,
   document.getElementById('root')
 );
