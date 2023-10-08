@@ -1,21 +1,16 @@
-import os
 import subprocess
-import sys
-import platform
 
-def run_python_script_in_new_terminal(script_path):
-    if platform.system() == "Windows":
-        subprocess.Popen(["start", "cmd", "/c", "python", script_path], shell=True)
-    elif platform.system() == "Darwin":  # macOS
-        subprocess.Popen(["open", "-a", "Terminal", "python", script_path])
+def run_python_script():
+    python_script_path = './udp_detect_json_write.py'  # Replace 'syn_flood_detection_json.py' with the path to your Python script
+    
+    try:
+        subprocess.run(['python', python_script_path], check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Error occurred while running the Python script: {e}")
+    except FileNotFoundError:
+        print(f"Python script '{python_script_path}' not found.")
     else:
-        print("Unsupported operating system")
-
-def main():
-    directory_path = r"./"
-    script_path = os.path.join(directory_path, "udp_detect_json_write.py")
-
-    run_python_script_in_new_terminal(script_path)
+        print("Python script ran successfully.")
 
 if __name__ == "__main__":
-    main()
+    run_python_script()
