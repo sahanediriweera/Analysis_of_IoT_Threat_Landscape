@@ -48,63 +48,55 @@ def fit_and_score(models,X_train,X_test,y_train,y_test):
   return model_scores
 
 
-df = pandas.read_pickle('./datasets/sample/featureData.pkl')
-print(df)
+df = pd.read_pickle('./datasets/sample/featureData.pkl')
 
-print(df['Device'].value_counts())
-
-print(df.transpose())
-
+# Remove columns with dictionary data
 dict_columns = identify_dictionary_columns(df=df)
-
 df = df.drop(dict_columns, axis=1)
 
+# Encode categorical columns
 for c in df.columns:
-  if df[c].dtype == 'object':
-    lbl = LabelEncoder()
-    lbl.fit(list(df[c].values))
-    df[c] = lbl.transform(df[c].values)
+    if df[c].dtype == 'object':
+        lbl = LabelEncoder()
+        lbl.fit(list(df[c].values))
+        df[c] = lbl.transform(df[c].values)
 
-arr_corr = df.corr().abs()['Device'].sort_values(ascending = False)
-print(arr_corr.to_string())
-
-corr_drop = arr_corr[arr_corr<0.001]
-print(corr_drop)
-
+# Drop columns with zero correlation to 'Device'
+arr_corr = df.corr().abs()['Device'].sort_values(ascending=False)
+corr_drop = arr_corr[arr_corr == 0]
 to_drop = list(corr_drop.index)
-print(to_drop)
+df = df.drop(to_drop, axis=1)
 
-df = df.drop(to_drop,axis = 1)
-
-print(df)
-
-print(df.head())
-
-X = df.drop('Device',axis = 1)
+# Split data into features (X) and target (y)
+X = df.drop('Device', axis=1)
 y = df['Device']
 
+# Fill missing values and handle infinite values
 X = X.fillna(X.mean())
-
 X = X.replace([np.inf, -np.inf], np.finfo(np.float64).max)
 
-X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.2)
-X_train.shape, X_test.shape,y_train.shape,y_test.shape
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
+# Handle NaN and infinite values again
 X_train = np.nan_to_num(X_train, nan=0.0, posinf=np.finfo(np.float64).max, neginf=np.finfo(np.float64).min)
 X_test = np.nan_to_num(X_test, nan=0.0, posinf=np.finfo(np.float64).max, neginf=np.finfo(np.float64).min)
 
+# Standardize features
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
-models = {'LogisticRegression': LogisticRegression(max_iter=10000),
-          'KNeighborsClassifier': KNeighborsClassifier(),
-          'SVC': SVC(),
-          'DecisionTreeClassifier': DecisionTreeClassifier(),
-          'RandomForestClassifier': RandomForestClassifier(),
-          'AdaBoostClassifier': AdaBoostClassifier(),
-          #'XGBClassifier': XGBClassifier(),
-          'GradientBoostingClassifier': GradientBoostingClassifier()}
+# Create and train the models
+models = {
+    'LogisticRegression': LogisticRegression(max_iter=10000),
+    'KNeighborsClassifier': KNeighborsClassifier(),
+    'SVC': SVC(),
+    'DecisionTreeClassifier': DecisionTreeClassifier(),
+    'RandomForestClassifier': RandomForestClassifier(),
+    'AdaBoostClassifier': AdaBoostClassifier(),
+    'GradientBoostingClassifier': GradientBoostingClassifier()
+}
 
 best_model_name = ''
 best_model = None
@@ -122,6 +114,7 @@ for name, model in models.items():
 print("Best model:", best_model_name)
 print("Best model score:", best_model_score)
 
+# Save the best model to a file
 directory = './'
 if not os.path.exists(directory):
     os.makedirs(directory)
@@ -131,3 +124,7 @@ with open(model_filepath, 'wb') as f:
     pickle.dump(best_model, f)
 
 print("Best model saved at:", model_filepath)
+
+# Create a JSON file to store feature values and corresponding 'Device' values
+y_values_df = pd.DataFrame({'Device_encoded': y_train, 'Device_original': lbl.inverse_transform(y_train)})
+y_values_df.to_csv(os.path.join(directory, 'y_values.csv'), index=False)
