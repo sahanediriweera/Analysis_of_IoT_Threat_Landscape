@@ -1529,3 +1529,8 @@
 20231008	22:19:26	c7f14a4e-75bb-43d1-854d-1976efbc4a7c	GET	http://localhost:3001	/httpNotification
 20231008	22:19:34	bba05f16-8326-49c0-9bf9-8b51f031c553	GET	http://localhost:3001	/udpNotification
 20231008	22:19:44	9e1f7025-4c55-4c45-b779-577dd29b884f	GET	http://localhost:3001	/ICMPNotification
+20231009	16:55:28	54da4d3e-4c01-4b07-af6d-3a32c4548f65	GET	undefined	/machineLearningResults
+20231009	16:55:28	e583b344-31cf-4ed0-9a41-33523e2e2415	GET	undefined	/favicon.ico
+20231009	16:56:42	96d92571-2b14-451a-9050-9e71859a16f6	GET	undefined	/machineLearningResults
+20231009	16:59:16	0688cc05-3e49-4681-b135-eee9948c5845	GET	undefined	/machineLearningResults
+20231009	17:02:11	df875d34-c145-4e05-a7f0-b68f09897c21	GET	undefined	/machineLearningResults
