@@ -1,8 +1,9 @@
 import subprocess
 
 python_script = "startAttackScans.py"
+password = "32902344"
 
-command = f"nohup python {python_script} > script.log 2>&1 &"
+command = f"echo {password} | sudo -S nohup python {python_script} > script.log 2>&1 &"
 
 subprocess.Popen(command, shell=True)
 
