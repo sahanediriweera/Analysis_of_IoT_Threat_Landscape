@@ -1,0 +1,74 @@
+[
+    {
+        "Predicted Device": "windows",
+        "IP": "192.168.2.17"
+    },
+    {
+        "Predicted Device": "windows",
+        "IP": "192.168.2.17"
+    },
+    {
+        "Predicted Device": "windows",
+        "IP": "192.168.2.17"
+    },
+    {
+        "Predicted Device": "windows 2",
+        "IP": "192.168.2.91"
+    },
+    {
+        "Predicted Device": "windows",
+        "IP": "192.168.2.17"
+    },
+    {
+        "Predicted Device": "thermostate",
+        "IP": "192.168.2.30"
+    },
+    {
+        "Predicted Device": "windows 2",
+        "IP": "192.168.2.91"
+    },
+    {
+        "Predicted Device": "kali",
+        "IP": "192.168.2.99"
+    },
+    {
+        "Predicted Device": "windows",
+        "IP": "192.168.2.17"
+    },
+    {
+        "Predicted Device": "thermostate",
+        "IP": "192.168.2.30"
+    },
+    {
+        "Predicted Device": "windows",
+        "IP": "192.168.2.17"
+    },
+    {
+        "Predicted Device": "windows 2",
+        "IP": "192.168.2.91"
+    },
+    {
+        "Predicted Device": "kali",
+        "IP": "192.168.2.99"
+    },
+    {
+        "Predicted Device": "smart plug",
+        "IP": "192.168.2.62"
+    },
+    {
+        "Predicted Device": "thermostate",
+        "IP": "192.168.2.30"
+    },
+    {
+        "Predicted Device": "windows",
+        "IP": "192.168.2.17"
+    },
+    {
+        "Predicted Device": "windows 2",
+        "IP": "192.168.2.91"
+    },
+    {
+        "Predicted Device": "kali",
+        "IP": "192.168.2.99"
+    }
+]
