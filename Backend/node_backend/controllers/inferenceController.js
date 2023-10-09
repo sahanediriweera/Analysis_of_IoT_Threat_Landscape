@@ -3,7 +3,7 @@ const path = require('path');
 
 const handleGetRequest = (req, res) => {
     res.send('it works');
-    const scriptPath = './../../Device Finger Printing/model_inference.py';
+    const scriptPath = './../../Device Finger Printing/inference_automated.py';
 
     const scriptDirectory = path.dirname(scriptPath);
 
