@@ -5,7 +5,7 @@ const fsPromises = require('fs').promises;
 const handleGetRequest = async (req, res) => {
 
     try {
-        const filePath = path.join(__dirname, '..', '..', '..', 'Attacks', 'icmp_flood_log.json');
+        const filePath = path.join(__dirname, '..', '..', '..', 'Attacks', 'http_alerts.json');
         
         const fileExists = await fsPromises.access(filePath)
             .then(() => true)

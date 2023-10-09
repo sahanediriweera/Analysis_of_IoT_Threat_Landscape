@@ -56,6 +56,7 @@ app.use('/httpNotification',require('./routes/httpNotifications')); // gives htt
 app.use('/synNotification',require('./routes/synNotifications')); // gives syn alerts json
 app.use('/udpNotification',require('./routes/udpNotifications')); // gives udp alerts json
 app.use('/ICMPNotification',require('./routes/ICMPNotifications')); // gives ICMP alerts json
+app.use('/clearNotifications',require('./routes/clearNotifications')); // clears all notifications
 
 app.use('/initialize_attack_detection',require('./routes/initializeAttackDetection')); // starts attack detection
 
