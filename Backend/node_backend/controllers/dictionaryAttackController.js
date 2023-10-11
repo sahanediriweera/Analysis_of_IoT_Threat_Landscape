@@ -2,7 +2,7 @@ const { spawn } = require('child_process');
 const path = require('path');
 const fsPromises = require('fs').promises;
 
-const handleGetRequestWithoutParams = async(req, res) => {
+const handleGetRequestWithoutParams = async (req, res) => {
 
     const ipAddress = req.query.ip;
     const port = req.query.port;
@@ -24,19 +24,19 @@ const handleGetRequestWithoutParams = async(req, res) => {
         console.error(`stderr: ${data}`);
     });
 
-    childPython.on('close', (code) => {
+    childPython.on('close', async (code) => {
         console.log(`child process exited with code ${code}`);
+
+        try {
+            const data = await fsPromises.readFile(path.join(__dirname, '..', '..', '..', 'Attacks', `results_of_${ipAddress}_${port}.json`), 'utf8');
+            console.log(data);
+            res.json(data);
+        } catch (err) {
+            res.send("Still processing, please wait");
+        }
     });
-
-
-    try{
-        const data = await fsPromises.readFile(path.join(__dirname,'..','..','..','Attacks',`results_of_${ipAddress}_${port}.json`),'utf8');
-        console.log(data);
-        res.json(data);
-    }catch (err){
-        res.send("Still processing Wait");
-    }
 }
+
 
 const handleGetRequestWithParams = async (req, res) => {
 
