@@ -2,31 +2,38 @@ import React, { useEffect } from 'react';
 import { NotificationManager } from 'react-notifications';
 import axios from 'axios';
 
-function fetchDataAndLog(attacName) {
+const results = [false, false, false, false];
+let attackNames = ["http","syn","udp","ICMP"]
 
+function fetchDataAndLog(attackNameNumber) {
 
+  const attackName = attackNames[attackNameNumber];
 
-  axios.get(`http://localhost:3000/${attacName}Notification`)
+  axios.get(`http://localhost:3000/${attackName}Notification`)
     .then((response) => {
       // Log the result to the console
-      NotificationManager.error( `${attacName} Attack!`.toUpperCase(),'Error', 5000);
+      results[attackNameNumber] = true;
     })
     .catch((error) => {
-      // Handle any errors
-      NotificationManager.info(`${attacName}`.toUpperCase() , 'No Attacks', 5000);
     });
 }
 
 function notifications() {
   let count = 0;
 
-  let attacNames = ["http","syn","udp","ICMP"]
-
  setInterval(() => {
-      fetchDataAndLog(attacNames[count%attacNames.length]);
+      fetchDataAndLog(count%attackNames.length);
       count = count + 1;
-    }, 10000);
+    }, 600000);
       
 };
 
-export {notifications};
+function displayAllNotifications(){
+  results.forEach( (result,key) => {
+    if (result){
+      NotificationManager.error(`${attackNames[key].toUpperCase()} attack Detected`,"Warning",5000);
+    }
+  } );
+}
+
+export {notifications,displayAllNotifications};
