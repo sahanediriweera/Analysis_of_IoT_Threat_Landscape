@@ -46,16 +46,16 @@ const AttackComponent = ({ openPorts, deviceip }) => {
         </select>
       </div>
       <div className="mb-4">
-        <label className="block mb-1">Attack Type:</label>
+        <label className="block mb-1">Attack Listener Type:</label>
         <select
           className="border p-2 w-full"
           value={attackType}
           onChange={(e) => setAttackType(e.target.value)}
         >
-          <option value="httpAttack">HTTP Attack</option>
-          <option value="icmp">ICMP Attack</option>
-          <option value="syn">SYN Attack</option>
-          <option value="udp">UDP Attack</option>
+          <option value="httpAttack">HTTP Attack Listener</option>
+          <option value="icmp">ICMP Attack Listener</option>
+          <option value="syn">SYN Attack Listener</option>
+          <option value="udp">UDP Attack Listener</option>
         </select>
       </div>
       <button
@@ -63,7 +63,7 @@ const AttackComponent = ({ openPorts, deviceip }) => {
         onClick={handleAttackClick}
         disabled={loading}
       >
-        {loading ? 'Attacking...' : 'Attack'}
+        {loading ? 'lisining...' : 'listen'}
       </button>
       {responseData && (
         <div className="mt-4">

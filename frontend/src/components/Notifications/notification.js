@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { NotificationManager } from 'react-notifications';
 import axios from 'axios';
+import { BASE_URL } from '../../config';
 
 function fetchDataAndLog(attacName) {
 
 
 
-  axios.get(`http://localhost:3000/${attacName}Notification`)
+  axios.get(`${BASE_URL}${attacName}Notification`)
     .then((response) => {
       // Log the result to the console
       NotificationManager.error( `${attacName} Attack!`.toUpperCase(),'Error', 5000);

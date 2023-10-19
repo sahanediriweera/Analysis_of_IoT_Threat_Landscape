@@ -46,39 +46,34 @@ export const initialState = {
 
     coverImage: coverImage,
 
-    endorsementTitle: `Hangout with your favorite people on your favorite apps`,
-    endorsementText: `AmpliChat powers conversations within DreamHub, VoiceQnA, VoiceMirror, BaZiPaiPai, and SpindriftHome.`,
+    endorsementTitle: `Discovering Vulnerabilities in Your IoT Devices: A Comprehensive Guide`,
+    endorsementText: `Technologies Used in Our Web Project`,
     endorsementList: [
         {
-            title: `DreamHub: Visualized Stories`,
+            title: `React`,
             titleColor: `orangeRed`,
-            image: dreamhub_filled,
-            URL: `https://dreamhub.app`,
+            image: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png`,
+            URL: `https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png`,
         },
         {
-            title: `VoiceQnA: Speak a New Language`,
+            title: `Node`,
             titleColor: `forestGreen`,
-            image: voiceqna_filled,
-            URL: `https://voiceqna.com`,
+            image: `https://miro.medium.com/v2/resize:fit:720/format:webp/1*bc9pmTiyKR0WNPka2w3e0Q.png`,
+            URL: `https://miro.medium.com/v2/resize:fit:720/format:webp/1*bc9pmTiyKR0WNPka2w3e0Q.png`,
         },
         {
-            title: `VoiceMirror: Travel Translator`,
+            title: `Python`,
             titleColor: `blue`,
-            image: voicemirror_filled,
-            URL: `https://voiceqna.com/mirror`,
+            image: `https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png`,
+            URL: `https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png`,
         },
         {
             title: `BaZiPaiPai: Know Your Destiny`,
             titleColor: `black`,
-            image: bazipaipai_unfilled,
-            URL: `https://bazipaipai.com`,
+            image: `https://store-images.s-microsoft.com/image/apps.26197.14261911708180816.c01bff75-7a55-49bc-bee2-a833cb67216d.21700488-d81b-48e0-bbf7-1d7f90afd071`,
+            URL: `https://store-images.s-microsoft.com/image/apps.26197.14261911708180816.c01bff75-7a55-49bc-bee2-a833cb67216d.21700488-d81b-48e0-bbf7-1d7f90afd071`,
         },
-        {
-            title: `SpindriftHome: HOA Management`,
-            titleColor: `orangeRed`,
-            image: spindrifthome_filled,
-            URL: `https://spindrifthome.com`,
-        },
+      
     ],
 
     sectionList: [

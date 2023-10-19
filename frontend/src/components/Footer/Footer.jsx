@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="w-full bg-white p-8">
       <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-2 bg-white text-center ">
-        <img src={logo} alt="logo-ct" className=" " />
+        <img src={logo} alt="logo-ct" style={{ height: "300px", width: "300px", margin: "0 auto" }}></img>
         
       </div>
       <div className="items-center justify-center flex flex-wrap h-20 ">

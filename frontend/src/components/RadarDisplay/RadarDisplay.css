@@ -10,8 +10,8 @@
   .razar {
     
     position: relative;
-    margin-top: 100px;
- 
+    margin-top: 10px;
+    margin-bottom: 100px;
     width: 700px;
     height: 700px;
     background-size: 100% 100%;
@@ -29,7 +29,7 @@
     width:700px;
     height:700px;
     border-radius:350px;
-    background:#dcf48a;
+    background:#0283d8;
     -moz-animation: pulsating 2s ease-in-out;
     -moz-animation-iteration-count: infinite;
     -webkit-animation: pulsating 2s ease-in-out;
@@ -50,7 +50,7 @@
   }
   
   .ring1 {
-    box-shadow:0 0 2px 1px #8eb716, inset 0 0 2px 1px #8eb716;
+    box-shadow:0 0 2px 1px #0d017a, inset 0 0 2px 1px #0283d8;
     -moz-animation: ring 2s ease-in-out;
     -moz-animation-iteration-count: infinite;
     -webkit-animation: ring 2s ease-in-out;
@@ -60,7 +60,7 @@
   }
   
   .ring2 {
-    box-shadow:0 0 1px 0px #cbe572, inset 0 0 1px 0px #cbe572;
+    box-shadow:0 0 1px 0px #0283d8, inset 0 0 1px 0px #0283d8;
     -moz-animation: ring 2s ease-in-out;
     -moz-animation-iteration-count: infinite;
     -moz-animation-delay: 0.5s;
@@ -145,23 +145,37 @@
   
   .pointer div {
     width: 49%;
-    border-bottom:2px solid #8eb716;
+    border-bottom:2px solid #0283d8;
   }
   
   .dot {
     opacity: 0;
-    border: 10px solid #e0f4a5;
+    border: 10px solid #0283d8;
     border-radius: 100%;
     position:absolute;
     -webkit-animation: blink 2s ease-out;
     -webkit-animation-iteration-count: infinite;
     -moz-animation: blink 2s ease-out;
     -moz-animation-iteration-count: infinite;
-    animation: blink 2s ease-out;
+    animation: blink 1s ease-out;
     animation-iteration-count: infinite;
     z-index: 25;
   }
   
+  .img {
+    /* opacity: 0; */
+    /* border: 2px solid #0283d8; */
+    /* border-radius: 100%; */
+     position:absolute; 
+    /* -webkit-animation: blink 2s ease-out; */
+    /* -webkit-animation-iteration-count: infinite;
+    -moz-animation: blink 2s ease-out;
+    -moz-animation-iteration-count: infinite; */
+    animation: blink 2s ease-out;
+    
+    /* z-index: 25; */
+  }
+
   .dot.pos1 {
     left:100px;
     top:380px;

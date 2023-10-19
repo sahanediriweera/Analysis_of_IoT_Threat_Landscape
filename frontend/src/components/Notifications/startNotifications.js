@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { NotificationManager } from 'react-notifications';
 import axios from 'axios';
 import {notifications} from './notification.js';
+import { BASE_URL } from '../../../src/config'; 
 
 function restartNotifications() {
 
@@ -14,7 +15,7 @@ function restartNotifications() {
 
 function initializeAttackScanner(attacName) {
 
-    axios.get('http://localhost:3000/initialize_attack_detection')
+    axios.get(`${BASE_URL}initialize_attack_detection`)
       .then((response) => {  
         NotificationManager.success( 'Intruder Detection System Activated','Success', 5000);
         notifications();
