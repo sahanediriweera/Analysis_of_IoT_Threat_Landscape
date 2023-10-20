@@ -1,0 +1,32 @@
+Trying 192.168.2.40...
+Connected to 192.168.2.40.
+Escape character is '^]'.
+{"method":"props","params":{"bright_with_zero":0,"power":"off"}}
+{"method":"props","params":{"bright_with_zero":50,"power":"on"}}
+{"method":"props","params":{"flowing":1}}
+{"method":"props","params":{"hue":36,"rgb":16750848,"flowing":0,"bright_with_zero":1,"bright":1}}
+{"method":"props","params":{"flow_params":"0,1,1996,1,14438425,80,1996,1,14448670,80,1996,1,11153940,8>
+{"method":"props","params":{"bright_with_zero":50,"bright":50}}
+{"method":"props","params":{"flowing":0,"color_mode":2}}
+{"method":"props","params":{"ct":3179}}
+{"method":"props","params":{"ct":3702}}
+{"method":"props","params":{"ct":5110}}
+{"method":"props","params":{"ct":5098}}
+{"method":"props","params":{"ct":5044}}
+{"method":"props","params":{"ct":3037}}
+{"method":"props","params":{"ct":5834}}
+{"method":"props","params":{"ct":5934}}
+{"method":"props","params":{"color_mode":1}}
+{"method":"props","params":{"color_mode":2,"ct":5138}}
+{"method":"props","params":{"hue":51,"rgb":16767488,"color_mode":1}}
+{"method":"props","params":{"hue":288,"sat":75,"rgb":14302975}}
+{"method":"props","params":{"hue":244,"sat":71,"rgb":5589503}}
+{"method":"props","params":{"hue":230,"sat":76,"rgb":3956223}}
+{"method":"props","params":{"hue":231,"rgb":4020991}}
+{"method":"props","params":{"flow_params":"0,1,3000,1,16711680,50,3000,1,65280,50,3000,1,255,50,3000,1>
+{"method":"props","params":{"flow_params":"0,1,3000,1,16770560,50,3000,1,65280,50,3000,1,255,50,3000,1>
+{"method":"props","params":{"flowing":0,"color_mode":2}}
+{"method":"props","params":{"color_mode":1}}
+{"method":"props","params":{"hue":36,"sat":100,"rgb":16750848,"bright_with_zero":1,"bright":1}}
+{"method":"props","params":{"hue":24,"rgb":16737792,"bright_with_zero":50,"bright":50}}
+Connection closed by foreign host.

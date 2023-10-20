@@ -60,18 +60,18 @@ const handleGetWithoutParams = async (req, res) => {
         console.error(`stderr: ${data}`);
     });
 
-    childPython.on('close', (code) => {
+    childPython.on('close',async (code) => {
+        
         console.log(`child process exited with code ${code}`);
+        try{
+            const data = await fsPromises.readFile(path.join(__dirname,'..','..','..','Network Scan',`open_ports_of_${ip_address}.json`),'utf8');
+            console.log(data);
+            res.json(data);
+        }catch (err){
+            console.log(err);
+            res.send("An error occured try again");
+        }
     });
-
-    try{
-        const data = await fsPromises.readFile(path.join(__dirname,'..','..','..','Network Scan',`open_ports_of_${ip_address}.json`),'utf8');
-        console.log(data);
-        res.json(data);
-    }catch (err){
-        console.log(err);
-        res.send("An error occured try again");
-    }
 };
 
 module.exports = {handleGetWithParams,handleGetWithoutParams};
