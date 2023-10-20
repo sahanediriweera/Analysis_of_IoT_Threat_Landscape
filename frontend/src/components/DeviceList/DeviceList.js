@@ -8,13 +8,26 @@ import Bulb from '../../assets/smartbulb.png';
 import Unknown from '../../assets/unknown.png';
 
 import { ThreeDots } from 'react-loader-spinner';
+import raspberry from '../../assets/raspberry.png'
+import phone from '../../assets/phone.jpg';
+import lap from '../../assets/lap.jpg' ;
+import smartSwitch from '../../assets/switch.jpg';
+
 
 const deviceTypeIcons = {
-  "Camera": camara,
-  "Smartwatch": Smartwatch,
-  "Smart Bulb": Bulb,
+  "192.168.2.1":raspberry,
+  "192.168.2.7": phone,
+  "192.168.2.91": lap,
+  "192.168.2.99" : phone,
+  "192.168.2.30" : lap,
+  "192.168.2.33" : lap,
+  "192.168.2.40" : Bulb,
+  "192.168.2.43" : smartSwitch,
+  "192.168.2.88" : lap,
+  "192.168.2.16 ": lap,
+  "192.168.2.17" : lap
+  
 };
-
 const unknownDeviceIcon = Unknown;
 
 const DeviceDetails = () => {
@@ -26,6 +39,7 @@ const DeviceDetails = () => {
     async function fetchData() {
       try {
         const response = await axios.get(`${BASE_URL}device_scan`);
+        console.log(response);
 
         if (response.status !== 200) {
           throw new Error(`Request failed with status: ${response.status}`);
@@ -65,13 +79,13 @@ const DeviceDetails = () => {
   return (
     <div className="container mx-auto px-4 py-8  text-black align-middle border-radius style={{ borderRadius: '10px', marginTop: '1
     50px' } " style={{ borderRadius: '10px' }}>
-      <h1 className="text-3xl font-bold mb-4 text-white text-center">Devices Details</h1>
+      <h1 className="text-3xl font-bold mb-4 text-black text-center">Devices Details</h1>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {devices.map((device, index) => (
           <Link key={index} to={`/devices/${index}`}>
             <div className="bg-white rounded-lg shadow p-4" key={index}>
               <img
-                src={deviceTypeIcons[device.DeviceTypeAndModel] || unknownDeviceIcon}
+                src={deviceTypeIcons[device.IPAddress] || unknownDeviceIcon}
                 alt={device.DeviceTypeAndModel || "Unknown Device"}
                 style={{ height: "100px", width: "100px", margin: "0 auto" }}
               />

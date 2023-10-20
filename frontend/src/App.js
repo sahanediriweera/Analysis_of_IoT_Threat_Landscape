@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 const App = () => {
   const [user] = useAuthState(auth);
   useEffect(() => {
-    startNotifications();
+    //startNotifications();
   }, []);
 
   return (

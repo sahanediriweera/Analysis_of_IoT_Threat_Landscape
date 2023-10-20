@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { NotificationManager } from 'react-notifications';
 import axios from 'axios';
+import { BASE_URL } from '../../config';
 
 const results = [false, false, false, false];
 let attackNames = ["http","syn","udp","ICMP"]
@@ -9,7 +10,7 @@ function fetchDataAndLog(attackNameNumber) {
 
   const attackName = attackNames[attackNameNumber];
 
-  axios.get(`http://localhost:3000/${attackName}Notification`)
+  axios.get(`${BASE_URL}${attacName}Notification`)
     .then((response) => {
       // Log the result to the console
       results[attackNameNumber] = true;

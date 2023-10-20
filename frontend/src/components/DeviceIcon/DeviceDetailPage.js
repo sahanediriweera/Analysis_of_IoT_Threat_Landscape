@@ -10,14 +10,26 @@ import TestEncryption from '../TestEncrption/TestEncrption';
 import DDocAttack from '../DOoS_Attack/DDocAttack';
 import DNS from '../DNSlookUP/DNS'
 import { BASE_URL } from '../../../src/config'; 
+import { ThreeDots } from 'react-loader-spinner';
+import raspberry from '../../assets/raspberry.png'
+import phone from '../../assets/phone.jpg';
+import lap from '../../assets/lap.jpg' ;
+import smartSwitch from '../../assets/switch.jpg';
 
 
 // Define a mapping of device types to image paths
 const deviceTypeIcons = {
-  "Camera": camara,
-  "Smartwatch": Smartwatch,
-  "Smart Bulb": Bulb,
-  // Add more device types and image paths as needed
+  "192.168.2.1":raspberry,
+  "192.168.2.7": phone,
+  "192.168.2.91": lap,
+  "192.168.2.99" : phone,
+  "192.168.2.30" : lap,
+  "192.168.2.33" : lap,
+  "192.168.2.40" : Bulb,
+  "192.168.2.43" : smartSwitch,
+  "192.168.2.88" : lap,
+  "192.168.2.16 ": lap,
+  "192.168.2.17" : lap
 };
 // Default image path for unknown devices
 const unknownDeviceIcon = Unknown;
@@ -66,7 +78,17 @@ const DeviceDetailPage = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        {/* Display a loading spinner */}
+        <ThreeDots color="#00BFFF" height={80} width={80} />
+        
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
   }
   const device = devices[index];
   const deviceip = device.IPAddress;
@@ -97,7 +119,7 @@ const dictionaryAttack = async (e) => {
   e.preventDefault(); // Prevent form submission
   
   try {
-    const response = await axios.get(`dictionary_attack?ip=${ip}&port=${port}`);
+    const response = await axios.get(`${BASE_URL}dictionary_attack?ip=${ip}&port=${port}`);
     const responseData = JSON.parse(response.data);
 
     console.log("Response Data:", responseData); // Log the responseData to see its structure
@@ -220,6 +242,7 @@ const dictionaryAttack = async (e) => {
             ))}
           </tbody>
         </table>
+        <h3 className="text-lg font-semibold mb-2">Your Password is unsecured.Immediately change your password!</h3>
       </div>
       )}
 
@@ -266,13 +289,13 @@ const dictionaryAttack = async (e) => {
   };
 
   return (
-    <div className="container  mx-auto px-4 py-8  text-black rounded-lg">
+    <div className="container  mx-auto px-4 py-8  text-black rounded-lg mb-30">
       <div className="flex">
         <div className="w-1/4 pr-8">
-          <h1 className="text-3xl font-bold mb-4 text-white text-center">Device Details</h1>
+          <h1 className="text-3xl font-bold mb-4 text-black text-center">Device Details</h1>
           <div className="bg-white rounded-lg shadow p-4 text-center">
               <img
-                src={deviceTypeIcons[device.DeviceTypeAndModel] || unknownDeviceIcon}
+                src={deviceTypeIcons[device.IPAddress] || unknownDeviceIcon}
                 alt={device.DeviceTypeAndModel || "Unknown Device"}
                 className="h-24 w-24 mx-auto mb-2"
               />
@@ -287,7 +310,7 @@ const dictionaryAttack = async (e) => {
           </div>
         </div>
         <div className="w-3/4">
-        <h1 className="text-3xl font-bold mb-4  text-white text-left">Actions</h1>
+        <h1 className="text-3xl font-bold mb-4  text-black text-left">Actions</h1>
           <div className="bg-white rounded-lg shadow p-4">
             <div className="mb-4">
               
@@ -307,7 +330,7 @@ const dictionaryAttack = async (e) => {
                     onClick={() => handleTabClick("dictionaryAttack")}
                     
                   >
-                    Dictionary Attack
+                    Check Credentials
                   </button>
                   <button
                     className={`w-1/4 m-1 px-4 py-2 rounded-md ${
@@ -315,7 +338,7 @@ const dictionaryAttack = async (e) => {
                     } hover:bg-blue-600 hover:text-white focus:outline-none`}
                     onClick={() => handleTabClick("ddos")}
                   >
-                    DDos
+                    DDoS
                   </button>
                   <button
                     className={`w-1/4 m-1 px-4 py-2 rounded-md ${

@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import axios from 'axios';
 import { BASE_URL } from '../../../src/config'; 
+import io from 'socket.io-client';
+
+const socket = io('http://192.168.2.40:55443');
 
 const TestEncryption = ({ openPorts, deviceip }) => {
   
@@ -16,6 +19,15 @@ const TestEncryption = ({ openPorts, deviceip }) => {
         console.error('Error fetching data:', error);
       });
   };
+
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    socket.on('message', (data) => {
+      setMessage(data);
+      console.log(data);
+    });
+  }, []);
 
   return (
     <div className="p-4">
