@@ -30,7 +30,7 @@ const handleGetRequest = async (req, res) => {
         console.log(`child process exited with code ${code}`);
         if (code === 0) {
             try {
-                const data = await fsPromises.readFile(path.join(__dirname, '..', '..', '..', 'encryption', 'received_messages.json'), 'utf8');
+                const data = await fsPromises.readFile(path.join(_dirname, '..', '..', '..', 'encryption', `received_messages_of${ip_address}port${port}.json`), 'utf8');
                 console.log(data);
                 res.json(data);
             } catch (err) {

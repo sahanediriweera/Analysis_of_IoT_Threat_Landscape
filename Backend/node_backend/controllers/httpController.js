@@ -25,7 +25,7 @@ const handleGetRequest = async (req, res) => {
     });
 
     try{
-        const data = await fsPromises.readFile(path.join(__dirname,'..','..','..','Attacks','http_alerts.json.json'),'utf8');
+        const data = await fsPromises.readFile(path.join(__dirname,'..','..','..','Attacks','http_alerts.json'),'utf8');
         console.log(data);
         res.json(data);
     }catch(err){

@@ -1,5 +1,0 @@
-{
-    "alert": "UDP flood detected",
-    "source_ip": "192.168.2.30",
-    "destination_ip": "142.250.192.36"
-}

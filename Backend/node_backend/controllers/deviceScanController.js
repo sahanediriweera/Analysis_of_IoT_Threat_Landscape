@@ -22,10 +22,8 @@ const handleGetRequest = async (req, res) => {
 
     
 
-    childPython.on('close', (code) => {
+    childPython.on('close', async(code) => {
         console.log(`child process exited with code ${code}`);
-    });
-
 
     try{
         const data = await fsPromises.readFile(path.join(__dirname,'..','..','..','Network Scan','device_scan_results.json'),'utf8');
@@ -35,6 +33,10 @@ const handleGetRequest = async (req, res) => {
         console.log(err);
         res.send("Bad Luck try again");
     }
+
+    });
+
+
 
 };
 

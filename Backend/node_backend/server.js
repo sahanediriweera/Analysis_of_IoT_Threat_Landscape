@@ -9,7 +9,8 @@ const errorHandler = require('./middleware/errorHandler');
 app.use(logger);
 
 // Cross Origin Resource Sharing
-const whitelist = [ 'http://localhost:3000' ,  'http://localhost:3001','http://localhost:4000'];
+const whitelist = [ 'http://localhost:3000' ,  'http://localhost:3001','http://localhost:4000','http://192.168.2.17/3000',
+'http://192.168.2.91/3000','http://192.168.2.30/3000'];
 const corsOptions = {
     origin: (origin, callback) => {
         if (whitelist.indexOf(origin) !== -1 || !origin) {
@@ -59,6 +60,7 @@ app.use('/ICMPNotification',require('./routes/ICMPNotifications')); // gives ICM
 app.use('/clearNotifications',require('./routes/clearNotifications')); // clears all notifications
 
 app.use('/initialize_attack_detection',require('./routes/initializeAttackDetection')); // starts attack detection
+app.use('/bulb_test',require('./routes/bulbTest')); //give ip and port
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

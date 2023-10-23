@@ -1,5 +1,5 @@
 {
-    "src_ip": "192.168.2.91",
+    "src_ip": "127.0.0.1",
     "des_ip": "127.0.1.1",
     "message": "ICMP flood attack detection"
 }

@@ -1,14 +1,68 @@
 [
   {
-    "MACAddress": "00:15:5d:4d:d1:a9",
+    "MACAddress": "08:00:27:4a:25:99",
     "DeviceID": "1",
-    "IPAddress": "172.19.220.243",
-    "VendorInformation": "Microsoft Corporation"
+    "IPAddress": "192.168.2.91",
+    "VendorInformation": "PCS Systemtechnik GmbH"
   },
   {
-    "MACAddress": "00:15:5d:4d:d3:97",
+    "MACAddress": "dc:a6:32:3f:a1:c7",
     "DeviceID": "2",
-    "IPAddress": "172.19.208.1",
-    "VendorInformation": "Microsoft Corporation"
+    "IPAddress": "192.168.2.1",
+    "VendorInformation": "Raspberry Pi Trading Ltd"
+  },
+  {
+    "MACAddress": "f8:a2:d6:73:99:a7",
+    "DeviceID": "3",
+    "IPAddress": "192.168.2.17",
+    "VendorInformation": "Liteon Technology Corporation"
+  },
+  {
+    "MACAddress": "08:00:27:ae:e6:f8",
+    "DeviceID": "4",
+    "IPAddress": "192.168.2.30",
+    "VendorInformation": "PCS Systemtechnik GmbH"
+  },
+  {
+    "MACAddress": "22:8c:aa:d6:97:c2",
+    "DeviceID": "5",
+    "IPAddress": "192.168.2.7",
+    "VendorInformation": ""
+  },
+  {
+    "MACAddress": "0c:54:15:03:56:e2",
+    "DeviceID": "6",
+    "IPAddress": "192.168.2.33",
+    "VendorInformation": "Intel Corporate"
+  },
+  {
+    "MACAddress": "58:b6:23:3d:a6:68",
+    "DeviceID": "7",
+    "IPAddress": "192.168.2.40",
+    "VendorInformation": ""
+  },
+  {
+    "MACAddress": "ec:0b:ae:fc:37:00",
+    "DeviceID": "9",
+    "IPAddress": "192.168.2.43",
+    "VendorInformation": "Hangzhou BroadLink Technology Co.,Ltd"
+  },
+  {
+    "MACAddress": "14:13:33:c9:66:e5",
+    "DeviceID": "10",
+    "IPAddress": "192.168.2.88",
+    "VendorInformation": "AzureWave Technology Inc."
+  },
+  {
+    "MACAddress": "e2:f0:73:df:a5:ce",
+    "DeviceID": "11",
+    "IPAddress": "192.168.2.99",
+    "VendorInformation": ""
+  },
+  {
+    "MACAddress": "c8:cb:9e:78:56:2c",
+    "DeviceID": "11",
+    "IPAddress": "192.168.2.16",
+    "VendorInformation": "Intel Corporate"
   }
 ]

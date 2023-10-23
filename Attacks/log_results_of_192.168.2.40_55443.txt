@@ -1,0 +1,14 @@
+Trying 192.168.2.40...
+Connected to 192.168.2.40.
+Escape character is '^]'.
+{"method":"props","params":{"flowing":1}}
+{"method":"props","params":{"flowing":0,"color_mode":2,"bright_with_zero":80,"bright":80}}
+{"method":"props","params":{"color_mode":1,"bright_with_zero":1,"bright":1}}
+{"method":"props","params":{"bright_with_zero":0,"power":"off"}}
+{"method":"props","params":{"bright_with_zero":1,"power":"on"}}
+{"method":"props","params":{"hue":240,"sat":60,"rgb":1315890,"bright_with_zero":50,"bright":50}}
+{"method":"props","params":{"flow_params":"0,1,1996,1,14438425,80,1996,1,14448670,80,1996,1,11153940,80","flowing":1}}
+{"method":"props","params":{"hue":24,"sat":100,"rgb":16737792,"flowing":0}}
+{"method":"props","params":{"color_mode":2,"bright_with_zero":80,"bright":80}}
+{"method":"props","params":{"flow_params":"0,1,4000,1,5838189,1,4000,1,6689834,1","flowing":1}}
+Connection closed by foreign host.
